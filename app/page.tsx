@@ -1,7 +1,42 @@
-import React from 'react';
-import { Mail, ExternalLink, Terminal, Shield, Cpu, Code2, FolderGit2, Globe } from 'lucide-react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
+import { Mail, ExternalLink, Terminal, Shield, Cpu, FolderGit2, Globe } from 'lucide-react';
 
 export default function Portfolio() {
+  const titles = [
+    "Information Systems Graduate",
+    "SysAdmin & Network Engineer",
+    "Systems Security Specialist",
+    "Full-Stack Web Developer"
+  ];
+
+  const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
+  const [currentText, setCurrentText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const fullText = titles[currentTitleIndex];
+    const typingSpeed = isDeleting ? 40 : 80;
+
+    const timer = setTimeout(() => {
+      if (!isDeleting) {
+        setCurrentText(fullText.substring(0, currentText.length + 1));
+        if (currentText === fullText) {
+          setTimeout(() => setIsDeleting(true), 1800);
+        }
+      } else {
+        setCurrentText(fullText.substring(0, currentText.length - 1));
+        if (currentText === '') {
+          setIsDeleting(false);
+          setCurrentTitleIndex((prev) => (prev + 1) % titles.length);
+        }
+      }
+    }, typingSpeed);
+
+    return () => clearTimeout(timer);
+  }, [currentText, isDeleting, currentTitleIndex]);
+
   const skills = [
     { 
       category: "Languages & Core", 
@@ -82,9 +117,12 @@ export default function Portfolio() {
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white">
             Rodney Binale Khabanje
           </h1>
-          <p className="text-xl text-cyan-400 font-mono">
-            Information Systems Graduate | SysAdmin & Network Security Specialist
-          </p>
+          
+          {/* Dynamic Typewriter Effect */}
+          <div className="text-xl md:text-2xl text-cyan-400 font-mono h-8 flex items-center">
+            <span>{currentText}</span>
+            <span className="animate-pulse ml-1 text-cyan-400 font-bold">|</span>
+          </div>
 
           {/* Terminal Box Style About */}
           <div className="p-6 rounded-xl border border-slate-800 bg-slate-900/60 font-mono text-sm space-y-4 shadow-xl">
