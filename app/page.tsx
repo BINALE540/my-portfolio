@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github, Linkedin, Mail, ExternalLink, Terminal, Shield, Cpu, Code2, FolderGit2 } from 'lucide-react';
+import { Mail, ExternalLink, Terminal, Shield, Cpu, Code2, FolderGit2, Globe } from 'lucide-react';
 
 export default function Portfolio() {
   const skills = [
@@ -109,10 +109,10 @@ export default function Portfolio() {
           </div>
 
           <div className="flex gap-4 pt-2">
-            <a href="https://github.com/BINALE540" target="_blank" rel="noreferrer" className="p-3 rounded-lg border border-slate-800 bg-slate-900 hover:border-cyan-500/50 hover:text-cyan-400 transition-all">
-              <Github className="w-5 h-5" />
+            <a href="https://github.com/BINALE540" target="_blank" rel="noreferrer" className="flex items-center gap-2 px-4 py-2.5 rounded-lg border border-slate-800 bg-slate-900 text-slate-300 hover:border-cyan-500/50 hover:text-cyan-400 transition-all font-mono text-xs">
+              <Globe className="w-4 h-4 text-cyan-400" /> GitHub / BINALE540
             </a>
-            <a href="#contact" className="px-6 py-3 rounded-lg bg-cyan-500 text-slate-950 font-semibold hover:bg-cyan-400 transition-all text-sm font-mono">
+            <a href="#contact" className="px-6 py-2.5 rounded-lg bg-cyan-500 text-slate-950 font-semibold hover:bg-cyan-400 transition-all text-xs font-mono">
               Get in Touch
             </a>
           </div>
