@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { Mail, ExternalLink, Terminal, Shield, Cpu, FolderGit2, Globe } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Mail, ExternalLink, Terminal as TerminalIcon, Shield, Cpu, FolderGit2, Globe, X } from 'lucide-react';
 
 export default function Portfolio() {
   const titles = [
@@ -15,6 +15,23 @@ export default function Portfolio() {
   const [currentText, setCurrentText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
 
+  // Terminal Modal State
+  const [isTerminalOpen, setIsTerminalOpen] = useState(false);
+  const [inputVal, setInputVal] = useState('');
+  const [terminalHistory, setTerminalHistory] = useState<Array<{ command?: string; output: React.ReactNode }>>([
+    {
+      output: (
+        <div className="text-slate-400">
+          <p className="text-cyan-400 font-bold">Welcome to Rodney&apos;s Web CLI v1.0.0</p>
+          <p className="text-xs">Type <span className="text-amber-400">help</span> to see available commands or <span className="text-amber-400">exit</span> to close.</p>
+        </div>
+      ),
+    },
+  ]);
+
+  const terminalEndRef = useRef<HTMLDivElement>(null);
+
+  // Typewriter effect
   useEffect(() => {
     const fullText = titles[currentTitleIndex];
     const typingSpeed = isDeleting ? 40 : 80;
@@ -36,6 +53,131 @@ export default function Portfolio() {
 
     return () => clearTimeout(timer);
   }, [currentText, isDeleting, currentTitleIndex]);
+
+  // Keyboard Shortcut (Ctrl + ~ or Cmd + ~)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && (e.key === '`' || e.key === '~')) {
+        e.preventDefault();
+        setIsTerminalOpen((prev) => !prev);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+  // Auto scroll terminal output
+  useEffect(() => {
+    if (isTerminalOpen) {
+      terminalEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [terminalHistory, isTerminalOpen]);
+
+  // Handle Command Execution
+  const handleCommandSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const cmd = inputVal.trim().toLowerCase();
+    if (!cmd) return;
+
+    let responseOutput: React.ReactNode = null;
+
+    switch (cmd) {
+      case 'help':
+        responseOutput = (
+          <div className="space-y-1 text-slate-300">
+            <p className="text-cyan-400 font-semibold">Available Shell Commands:</p>
+            <p><span className="text-amber-400 w-28 inline-block">help</span> - Display available commands</p>
+            <p><span className="text-amber-400 w-28 inline-block">skills</span> - Output technical stack details</p>
+            <p><span className="text-amber-400 w-28 inline-block">projects</span> - List active engineering projects</p>
+            <p><span className="text-amber-400 w-28 inline-block">about</span> - Display user profile details</p>
+            <p><span className="text-amber-400 w-28 inline-block">ping cybersentinel</span> - Simulate live security probe</p>
+            <p><span className="text-amber-400 w-28 inline-block">contact</span> - Show contact details</p>
+            <p><span className="text-amber-400 w-28 inline-block">clear</span> - Clear terminal screen</p>
+            <p><span className="text-amber-400 w-28 inline-block">exit</span> - Close terminal overlay</p>
+          </div>
+        );
+        break;
+
+      case 'skills':
+        responseOutput = (
+          <div className="space-y-1 text-slate-300 font-mono text-xs">
+            <p className="text-cyan-400 font-semibold">[+] TECHNICAL SKILLS BREAKDOWN</p>
+            <p>├── <span className="text-amber-400">Languages:</span> TypeScript, JavaScript, Python 3, SQL, Bash</p>
+            <p>├── <span className="text-amber-400">SysAdmin:</span> Linux (Ubuntu), SSH, UFW Firewall, System Diagnostics</p>
+            <p>├── <span className="text-amber-400">Networking:</span> TCP/IP, Sockets, HTTP/SSL Auditing, Routing</p>
+            <p>└── <span className="text-amber-400">Web & DevOps:</span> Next.js, React, Node.js, Express, Git, Vercel</p>
+          </div>
+        );
+        break;
+
+      case 'projects':
+        responseOutput = (
+          <div className="space-y-2 text-slate-300 text-xs font-mono">
+            <p className="text-cyan-400 font-semibold">[+] ACTIVE REPOSITORIES</p>
+            <p>1. <span className="text-emerald-400 font-bold">[Completed]</span> CyberSentinel — Python Vulnerability Auditor</p>
+            <p>   URL: https://github.com/BINALE540/cybersentinel</p>
+            <p>2. <span className="text-amber-400 font-bold">[In Progress]</span> MicroService Guard — TypeScript API Gateway</p>
+            <p>3. <span className="text-slate-500 font-bold">[Planned]</span> NetPulse — Real-Time Telemetry Dashboard</p>
+          </div>
+        );
+        break;
+
+      case 'about':
+        responseOutput = (
+          <div className="text-slate-300 text-xs leading-relaxed space-y-1">
+            <p className="text-cyan-400 font-bold">Rodney Binale Khabanje</p>
+            <p>B.Sc. Information Systems — Maseno University</p>
+            <p>Specialization: Linux System Administration, Network Security, and Full-Stack Engineering.</p>
+          </div>
+        );
+        break;
+
+      case 'ping cybersentinel':
+        responseOutput = (
+          <div className="space-y-1 text-xs font-mono text-emerald-400">
+            <p>PING cybersentinel.local (127.0.0.1) 56(84) bytes of data.</p>
+            <p>64 bytes from 127.0.0.1: icmp_seq=1 ttl=64 time=0.038 ms</p>
+            <p>64 bytes from 127.0.0.1: icmp_seq=2 ttl=64 time=0.042 ms</p>
+            <p>64 bytes from 127.0.0.1: icmp_seq=3 ttl=64 time=0.035 ms</p>
+            <p className="text-cyan-400">[✓] Target operational. Multi-threaded TCP Scanner & Header auditor ready.</p>
+          </div>
+        );
+        break;
+
+      case 'contact':
+        responseOutput = (
+          <div className="text-xs text-slate-300 font-mono">
+            <p><span className="text-cyan-400">Email:</span> rodneykbinalekhabanje@gmail.com</p>
+            <p><span className="text-cyan-400">GitHub:</span> https://github.com/BINALE540</p>
+          </div>
+        );
+        break;
+
+      case 'clear':
+        setTerminalHistory([]);
+        setInputVal('');
+        return;
+
+      case 'exit':
+        setIsTerminalOpen(false);
+        setInputVal('');
+        return;
+
+      default:
+        responseOutput = (
+          <p className="text-red-400 text-xs">
+            zsh: command not found: {cmd}. Type <span className="text-amber-400 underline">help</span> for available commands.
+          </p>
+        );
+        break;
+    }
+
+    setTerminalHistory((prev) => [
+      ...prev,
+      { command: inputVal, output: responseOutput },
+    ]);
+    setInputVal('');
+  };
 
   const skills = [
     { 
@@ -89,10 +231,18 @@ export default function Portfolio() {
       {/* Navigation Header */}
       <header className="sticky top-0 z-50 backdrop-blur-md bg-slate-950/80 border-b border-slate-800/80 px-6 py-4">
         <div className="max-w-5xl mx-auto flex justify-between items-center">
-          <div className="flex items-center gap-2 text-cyan-400 font-mono font-bold text-base">
-            <Terminal className="w-5 h-5" />
+          <button 
+            onClick={() => setIsTerminalOpen(true)}
+            title="Click or press Ctrl + ~ to open interactive shell"
+            className="flex items-center gap-2 text-cyan-400 font-mono font-bold text-base hover:text-cyan-300 transition-colors cursor-pointer group"
+          >
+            <TerminalIcon className="w-5 h-5 group-hover:scale-110 transition-transform" />
             <span>rodney@binalerodney:~#</span>
-          </div>
+            <span className="text-xs text-slate-500 font-normal hidden sm:inline ml-2 border border-slate-800 px-2 py-0.5 rounded bg-slate-900">
+              Ctrl + ~
+            </span>
+          </button>
+
           <nav className="hidden md:flex gap-8 text-sm text-slate-400 font-medium">
             <a href="#about" className="hover:text-cyan-400 transition-colors">About</a>
             <a href="#skills" className="hover:text-cyan-400 transition-colors">Skills</a>
@@ -150,9 +300,12 @@ export default function Portfolio() {
             <a href="https://github.com/BINALE540" target="_blank" rel="noreferrer" className="flex items-center gap-2 px-4 py-2.5 rounded-lg border border-slate-800 bg-slate-900 text-slate-300 hover:border-cyan-500/50 hover:text-cyan-400 transition-all font-mono text-xs">
               <Globe className="w-4 h-4 text-cyan-400" /> GitHub / BINALE540
             </a>
-            <a href="#contact" className="px-6 py-2.5 rounded-lg bg-cyan-500 text-slate-950 font-semibold hover:bg-cyan-400 transition-all text-xs font-mono">
-              Get in Touch
-            </a>
+            <button 
+              onClick={() => setIsTerminalOpen(true)}
+              className="px-6 py-2.5 rounded-lg bg-cyan-500 text-slate-950 font-semibold hover:bg-cyan-400 transition-all text-xs font-mono"
+            >
+              Open Web CLI Shell
+            </button>
           </div>
         </section>
 
@@ -221,7 +374,7 @@ export default function Portfolio() {
 
         {/* Contact Section */}
         <section id="contact" className="space-y-6 border-t border-slate-800 pt-12">
-          <h2 className="text-2xl font-bold text-white">Let's Connect</h2>
+          <h2 className="text-2xl font-bold text-white">Let&apos;s Connect</h2>
           <p className="text-slate-400 max-w-xl leading-relaxed">
             I am currently open to opportunities in System Administration, Network Engineering, Cybersecurity, and Software Development. Feel free to send a message or connect directly.
           </p>
@@ -234,6 +387,66 @@ export default function Portfolio() {
         </section>
 
       </main>
+
+      {/* Interactive Web CLI Modal Overlay */}
+      {isTerminalOpen && (
+        <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="w-full max-w-2xl bg-slate-900 border border-slate-800 rounded-xl shadow-2xl overflow-hidden flex flex-col h-[480px]">
+            
+            {/* Modal Header */}
+            <div className="bg-slate-950 px-4 py-3 border-b border-slate-800 flex justify-between items-center">
+              <div className="flex items-center gap-2">
+                <span className="h-3 w-3 rounded-full bg-red-500/80 inline-block"></span>
+                <span className="h-3 w-3 rounded-full bg-yellow-500/80 inline-block"></span>
+                <span className="h-3 w-3 rounded-full bg-green-500/80 inline-block"></span>
+                <span className="ml-2 text-xs font-mono text-slate-400">rodney@binalerodney:~ (bash)</span>
+              </div>
+              <button 
+                onClick={() => setIsTerminalOpen(false)}
+                className="text-slate-400 hover:text-white transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Terminal Body */}
+            <div className="flex-1 p-4 overflow-y-auto font-mono text-sm space-y-4">
+              {terminalHistory.map((item, index) => (
+                <div key={index} className="space-y-1">
+                  {item.command !== undefined && (
+                    <div className="flex items-center gap-2 text-slate-300">
+                      <span className="text-cyan-400 font-bold">rodney@binalerodney:~$</span>
+                      <span>{item.command}</span>
+                    </div>
+                  )}
+                  <div>{item.output}</div>
+                </div>
+              ))}
+              
+              {/* Input Line */}
+              <form onSubmit={handleCommandSubmit} className="flex items-center gap-2 pt-2">
+                <span className="text-cyan-400 font-bold">rodney@binalerodney:~$</span>
+                <input
+                  type="text"
+                  value={inputVal}
+                  onChange={(e) => setInputVal(e.target.value)}
+                  autoFocus
+                  placeholder="Type 'help'..."
+                  className="flex-1 bg-transparent text-slate-100 outline-none font-mono text-sm"
+                />
+              </form>
+              <div ref={terminalEndRef} />
+            </div>
+
+            {/* Footer hint */}
+            <div className="bg-slate-950/60 px-4 py-2 border-t border-slate-800/80 text-xs text-slate-500 font-mono flex justify-between">
+              <span>Press ESC or type &apos;exit&apos; to quit</span>
+              <span>v1.0.0</span>
+            </div>
+
+          </div>
+        </div>
+      )}
 
       <footer className="border-t border-slate-800/80 py-8 text-center text-xs text-slate-500 font-mono">
         © 2026 Rodney Binale Khabanje. Deployed on Vercel.
