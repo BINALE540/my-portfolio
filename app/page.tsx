@@ -6,28 +6,28 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 export default function Home() {
   const projects = [
-    {
-      title: "CyberSentinel — Vulnerability Scanner",
-      description: "Automated network and security auditor that scans for open ports, misconfigured HTTP headers, and system package vulnerabilities on Linux environments.",
-      tags: ["Python", "Ubuntu Linux", "Cybersecurity", "REST API", "Docker"],
-      github: "https://github.com",
-      demo: "https://example.com",
-    },
-    {
-      title: "MicroService Guard — Auth Gateway",
-      description: "High-performance reverse proxy handling JWT token rotation, rate limiting, and secure RBAC access control for distributed services.",
-      tags: ["TypeScript", "Node.js", "OAuth2", "PostgreSQL", "Systems"],
-      github: "https://github.com",
-      demo: "https://example.com",
-    },
-    {
-      title: "NetPulse — Telemetry Dashboard",
-      description: "Real-time system telemetry tracking dashboard visualizing live server metrics, memory consumption, and network throughput via WebSockets.",
-      tags: ["Next.js", "TypeScript", "Tailwind CSS", "WebSockets"],
-      github: "https://github.com",
-      demo: "https://example.com",
-    },
-  ];
+  {
+    title: "CyberSentinel — Vulnerability Scanner",
+    description: "Automated network and security auditor built in Python for Linux environments. Features multi-threaded TCP port scanning, HTTP security header auditing with protocol fallback, local UFW firewall checks, and JSON reporting.",
+    tags: ["Python 3", "Linux", "Sockets", "Threading", "Cybersecurity", "JSON"],
+    github: "https://github.com/BINALE540/cybersentinel",
+    demo: "https://github.com/BINALE540/cybersentinel",
+  },
+  {
+    title: "MicroService Guard — Auth Gateway",
+    description: "High-performance reverse proxy handling JWT token rotation, rate limiting, and secure RBAC access control for distributed microservices.",
+    tags: ["TypeScript", "Node.js", "OAuth2", "PostgreSQL", "Systems"],
+    github: "https://github.com/BINALE540",
+    demo: "https://github.com/BINALE540",
+  },
+  {
+    title: "NetPulse — Telemetry Dashboard",
+    description: "Real-time system telemetry tracking dashboard visualizing live server metrics, memory consumption, and network throughput via WebSockets.",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "WebSockets"],
+    github: "https://github.com/BINALE540",
+    demo: "https://github.com/BINALE540",
+  },
+];
 
   const skills = [
     "Information Systems",
