@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Mail, ExternalLink, Terminal as TerminalIcon, Shield, Cpu, FolderGit2, Globe, X } from 'lucide-react';
+import { Mail, ExternalLink, Terminal as TerminalIcon, Shield, Cpu, FolderGit2, Globe, X, FileText } from 'lucide-react';
 
 export default function Portfolio() {
   const titles = [
@@ -84,12 +84,13 @@ export default function Portfolio() {
     switch (cmd) {
       case 'help':
         responseOutput = (
-          <div className="space-y-1 text-slate-300">
+          <div className="space-y-1 text-slate-300 text-xs font-mono">
             <p className="text-cyan-400 font-semibold">Available Shell Commands:</p>
             <p><span className="text-amber-400 w-28 inline-block">help</span> - Display available commands</p>
             <p><span className="text-amber-400 w-28 inline-block">skills</span> - Output technical stack details</p>
             <p><span className="text-amber-400 w-28 inline-block">projects</span> - List active engineering projects</p>
             <p><span className="text-amber-400 w-28 inline-block">about</span> - Display user profile details</p>
+            <p><span className="text-amber-400 w-28 inline-block">resume</span> - Download Curriculum Vitae (PDF)</p>
             <p><span className="text-amber-400 w-28 inline-block">ping cybersentinel</span> - Simulate live security probe</p>
             <p><span className="text-amber-400 w-28 inline-block">contact</span> - Show contact details</p>
             <p><span className="text-amber-400 w-28 inline-block">clear</span> - Clear terminal screen</p>
@@ -128,6 +129,24 @@ export default function Portfolio() {
             <p className="text-cyan-400 font-bold">Rodney Binale Khabanje</p>
             <p>B.Sc. Information Systems — Maseno University</p>
             <p>Specialization: Linux System Administration, Network Security, and Full-Stack Engineering.</p>
+          </div>
+        );
+        break;
+
+      case 'resume':
+      case 'cv':
+        responseOutput = (
+          <div className="space-y-2 text-xs font-mono text-slate-300">
+            <p className="text-cyan-400 font-bold">[+] RESUME / CV DOWNLOAD</p>
+            <p>Access my complete curriculum vitae (PDF):</p>
+            <a 
+              href="/Rodney_Binale_Khabanje_Cv.pdf" 
+              target="_blank" 
+              download="Rodney_Binale_Khabanje_Cv.pdf"
+              className="text-amber-400 underline font-semibold hover:text-cyan-400 transition-colors"
+            >
+              Click here to download Rodney_Binale_Khabanje_Cv.pdf
+            </a>
           </div>
         );
         break;
@@ -296,10 +315,27 @@ export default function Portfolio() {
             </div>
           </div>
 
-          <div className="flex gap-4 pt-2">
-            <a href="https://github.com/BINALE540" target="_blank" rel="noreferrer" className="flex items-center gap-2 px-4 py-2.5 rounded-lg border border-slate-800 bg-slate-900 text-slate-300 hover:border-cyan-500/50 hover:text-cyan-400 transition-all font-mono text-xs">
+          <div className="flex flex-wrap gap-4 pt-2">
+            <a 
+              href="https://github.com/BINALE540" 
+              target="_blank" 
+              rel="noreferrer" 
+              className="flex items-center gap-2 px-4 py-2.5 rounded-lg border border-slate-800 bg-slate-900 text-slate-300 hover:border-cyan-500/50 hover:text-cyan-400 transition-all font-mono text-xs"
+            >
               <Globe className="w-4 h-4 text-cyan-400" /> GitHub / BINALE540
             </a>
+
+            {/* Resume Download Button */}
+            <a 
+              href="/Rodney_Binale_Khabanje_Cv.pdf" 
+              download="Rodney_Binale_Khabanje_Cv.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-lg border border-cyan-500/40 bg-cyan-500/10 text-cyan-400 hover:bg-cyan-500/20 transition-all font-mono text-xs font-semibold"
+            >
+              <FileText className="w-4 h-4 text-cyan-400" /> Download CV (PDF)
+            </a>
+
             <button 
               onClick={() => setIsTerminalOpen(true)}
               className="px-6 py-2.5 rounded-lg bg-cyan-500 text-slate-950 font-semibold hover:bg-cyan-400 transition-all text-xs font-mono"
