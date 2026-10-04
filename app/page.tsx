@@ -206,13 +206,34 @@ export default function Portfolio() {
     setInputVal('');
   };
 
-  const handleContactSubmit = (e: React.FormEvent) => {
+  const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setFormSubmitted(true);
-    setTimeout(() => {
-      setFormSubmitted(false);
-      setFormState({ name: '', email: '', subject: '', message: '' });
-    }, 4000);
+    
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "76ea6df0-e037-4de6-ba85-2e31ffcb17e5", // <--- PASTE YOUR KEY HERE
+          name: formState.name,
+          email: formState.email,
+          subject: formState.subject,
+          message: formState.message,
+        }),
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setFormSubmitted(true);
+        setFormState({ name: '', email: '', subject: '', message: '' });
+        setTimeout(() => setFormSubmitted(false), 5000);
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+    }
   };
 
   const progressSkills = [
