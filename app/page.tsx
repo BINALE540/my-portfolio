@@ -14,6 +14,7 @@ export default function Portfolio() {
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
   const [currentText, setCurrentText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
+  const [imageError, setImageError] = useState(false);
 
   // Terminal Modal State
   const [isTerminalOpen, setIsTerminalOpen] = useState(false);
@@ -288,17 +289,20 @@ export default function Portfolio() {
 
       <main className="max-w-5xl mx-auto px-6 py-12 space-y-24">
         
-        {/* Hero Section with Avatar Card */}
+        {/* Hero Section */}
         <section id="about" className="space-y-8 pt-6">
-          {/* Open to Roles Banner */}
-          <div className="inline-flex flex-wrap items-center gap-2 px-3 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-xs font-mono">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+          {/* Vibrant Gradient Open to Roles Banner */}
+          <div className="inline-flex flex-wrap items-center gap-2 px-4 py-2 rounded-full border border-pink-500/30 bg-gradient-to-r from-pink-500/20 via-purple-500/20 to-cyan-500/20 text-xs font-mono shadow-lg shadow-purple-500/10">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-pink-500"></span>
             </span>
-            <span>🟢 Open to Roles: System Developer | Linux SysAdmin | Network Engineering | Cyber Defense</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-300 to-cyan-400 font-bold">
+              OPEN TO ROLES:
+            </span>
+            <span className="text-slate-200">System Developer | Linux SysAdmin | Network Engineering | Cyber Defense</span>
             <span className="text-slate-500 hidden sm:inline">|</span>
-            <span className="text-slate-400">On-site, Hybrid & Remote (Kenya / Global)</span>
+            <span className="text-cyan-400 font-semibold">Kenya / Remote / Hybrid</span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
@@ -318,15 +322,26 @@ export default function Portfolio() {
               </p>
             </div>
 
-            {/* Right Profile Frame (Glowing Avatar Card with Photo) */}
+            {/* Right Profile Frame (Glow Avatar Card with JPEG Support & Fallback) */}
             <div className="flex justify-center">
-              <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-full p-1 bg-gradient-to-tr from-cyan-500 via-emerald-500 to-indigo-500 shadow-2xl shadow-cyan-500/20">
-                <div className="w-full h-full rounded-full bg-slate-900 border border-slate-800 overflow-hidden relative group">
-                  <img 
-                    src="/profile.jpg" 
-                    alt="Rodney Binale Khabanje" 
-                    className="w-full h-full object-cover rounded-full group-hover:scale-105 transition-transform duration-300"
-                  />
+              <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-full p-1 bg-gradient-to-tr from-cyan-500 via-indigo-500 to-pink-500 shadow-2xl shadow-cyan-500/20">
+                <div className="w-full h-full rounded-full bg-slate-900 border border-slate-800 overflow-hidden relative flex items-center justify-center">
+                  {!imageError ? (
+                    <img 
+                      src="/profile.jpeg" 
+                      alt="Rodney Binale Khabanje" 
+                      onError={() => setImageError(true)}
+                      className="w-full h-full object-cover rounded-full hover:scale-105 transition-transform duration-300"
+                    />
+                  ) : (
+                    <div className="flex flex-col items-center justify-center p-4 text-center">
+                      <span className="text-3xl font-extrabold text-cyan-400 font-mono">RBK</span>
+                      <span className="text-xs text-slate-400 mt-1 font-mono">Rodney Khabanje</span>
+                      <span className="text-[10px] text-emerald-400 font-mono mt-1 border border-emerald-500/30 px-2 py-0.5 rounded-full bg-emerald-500/10">
+                        Grade A IT Specialist
+                      </span>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -351,7 +366,7 @@ export default function Portfolio() {
             </div>
           </div>
 
-          {/* Action Buttons with Call / WhatsApp Links */}
+          {/* Action Buttons */}
           <div className="flex flex-wrap gap-4 pt-2">
             <a 
               href="https://wa.me/254757468025" 
