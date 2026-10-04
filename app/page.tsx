@@ -290,12 +290,15 @@ export default function Portfolio() {
         
         {/* Hero Section with Avatar Card */}
         <section id="about" className="space-y-8 pt-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-xs font-mono">
+          {/* Open to Roles Banner */}
+          <div className="inline-flex flex-wrap items-center gap-2 px-3 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-xs font-mono">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
             </span>
-            Available for System Development, SysAdmin & Security Roles
+            <span>🟢 Open to Roles: System Developer | Linux SysAdmin | Network Engineering | Cyber Defense</span>
+            <span className="text-slate-500 hidden sm:inline">|</span>
+            <span className="text-slate-400">On-site, Hybrid & Remote (Kenya / Global)</span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
@@ -311,19 +314,19 @@ export default function Portfolio() {
               </div>
 
               <p className="text-slate-400 leading-relaxed text-sm md:text-base">
-                B.Sc. Information Systems Graduate from Maseno University (Evaluated Grade A Attachment at Kibabii University). I specialize in system development, managing Linux environments, auditing network security, and supporting enterprise ERP workflows.
+                B.Sc. Information Systems Graduate from Maseno University (Evaluated Grade A Attachment at Kibabii University). I specialize in custom system development, managing Linux environments, auditing network security, and supporting enterprise ERP workflows.
               </p>
             </div>
 
-            {/* Right Profile Frame (Glow Card inspired by Video) */}
+            {/* Right Profile Frame (Glowing Avatar Card with Photo) */}
             <div className="flex justify-center">
               <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-full p-1 bg-gradient-to-tr from-cyan-500 via-emerald-500 to-indigo-500 shadow-2xl shadow-cyan-500/20">
-                <div className="w-full h-full rounded-full bg-slate-900 flex flex-col items-center justify-center p-4 text-center border border-slate-800">
-                  <span className="text-3xl font-extrabold text-cyan-400 font-mono">RBK</span>
-                  <span className="text-xs text-slate-400 mt-1 font-mono">Rodney Khabanje</span>
-                  <span className="text-[10px] text-emerald-400 font-mono mt-1 border border-emerald-500/30 px-2 py-0.5 rounded-full bg-emerald-500/10">
-                    Grade A IT Specialist
-                  </span>
+                <div className="w-full h-full rounded-full bg-slate-900 border border-slate-800 overflow-hidden relative group">
+                  <img 
+                    src="/profile.jpg" 
+                    alt="Rodney Binale Khabanje" 
+                    className="w-full h-full object-cover rounded-full group-hover:scale-105 transition-transform duration-300"
+                  />
                 </div>
               </div>
             </div>
@@ -385,7 +388,7 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* Skills Section with Progress Bars (Video Style) */}
+        {/* Skills Section with Progress Bars */}
         <section id="skills" className="space-y-8">
           <div className="border-b border-slate-800 pb-4">
             <h2 className="text-2xl font-bold text-white flex items-center gap-2">
@@ -411,7 +414,7 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* My Services Section (Video Style) */}
+        {/* My Services Section */}
         <section id="services" className="space-y-8">
           <div className="border-b border-slate-800 pb-4">
             <h2 className="text-2xl font-bold text-white flex items-center gap-2">
@@ -465,7 +468,7 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* Contact Me Section with Functional Form (Video Style) */}
+        {/* Contact Me Section */}
         <section id="contact" className="space-y-8 border-t border-slate-800 pt-12">
           <div className="border-b border-slate-800 pb-4">
             <h2 className="text-2xl font-bold text-white flex items-center gap-2">
