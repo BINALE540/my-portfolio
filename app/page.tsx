@@ -378,8 +378,7 @@ export default function Portfolio() {
             </div>
             
             <div className="space-y-3 text-slate-300 leading-relaxed">
-              <p><span className="text-cyan-400 font-bold">BINALE RODNEY KHABANJE</span>
-               SUMMARY </p>
+              <p><span className="text-cyan-400 font-bold">BINALE RODNEY KHABANJE</span> summary </p>
               <p><span className="text-amber-400">Education:</span> B.Sc. Information Systems — Maseno University</p>
               <p><span className="text-amber-400">Specializations:</span> System Development, Linux Infrastructure, ERP Systems, Network Engineering & Security</p>
               <p className="text-slate-400 pt-2">
