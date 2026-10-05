@@ -22,73 +22,6 @@ export default function Portfolio() {
   const [terminalHistory, setTerminalHistory] = useState<Array<{ command?: string; output: React.ReactNode }>>([
     {
       output: (
-        <div className="text-slate-400 font-mono text-xs space-y-1">
-          <p className="text-cyan-400 font-bold">Welcome to Binale Digital Solutions Web CLI v1.0.0</p>
-          <p className="text-xs">Type <span className="text-amber-400">help</span> to see available commands or <span className="text-amber-400">exit</span> to close.</p>
-        </div>
-      ),
-    },
-  ]);
-
-  const terminalEndRef = useRef<HTMLDivElement>(null);
-
-  // Contact Form State
-  const [formState, setFormState] = useState({ name: '', email: '', subject: '', message: '' });
-  const [formSubmitted, setFormSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  // Typewriter effect
-  useEffect(() => {
-    const fullText = titles[currentTitleIndex];
-    const typingSpeed = isDeleting ? 30 : 70;
-
-    const timer = setTimeout(() => {
-      if (!isDeleting) {
-        setCurrentText(fullText.substring(0, currentText.length + 1));
-        if (currentText === fullText) {
-          setTimeout(() => setIsDeleting(true), 2000);
-        }
-      } else {
-        setCurrentText(fullText.substring(0, currentText.length - 1));
-        if (currentText === '')Here is the complete, fully updated **`app/page.tsx`** file incorporating all the features, custom styling, and branding updates:
-
-- **Company Branding:** Rebranded under **Binale Digital Solutions (BDS)** across the header, typewriter titles, bio, and CLI prompt (`sysadmin@binaledigital:~$`).
-- **Interactive Glowing Block Cursors:** Animated neon cyan cursors added to the typewriter hero, terminal text summary, and interactive Web CLI modal.
-- **Frosted Glassmorphism Project Cards:** Hover-activated gradient borders, backdrop blurs (`backdrop-blur-md`), ambient light halos, and pulsing live status badges.
-- **Fixed Profile Photo Extension:** Configured to reference `/profile.jpeg` with fallback avatar initials (`RBK`).
-- **Vibrant Open to Roles Banner:** Glowing pink/purple/cyan gradient pill.
-- **Interactive Web CLI Modal:** Terminal commands (`help`, `skills`, `projects`, `services`, `about`, `resume`, `contact`, `clear`, `exit`).
-- **Direct Contact & WhatsApp Actions:** Instant messaging links and call actions alongside the direct email form handler.
-
----
-
-### Complete Code: `app/page.tsx`
-
-```tsx
-'use client';
-
-import React, { useState, useEffect, useRef } from 'react';
-import { Mail, ExternalLink, Terminal as TerminalIcon, Cpu, FolderGit2, Globe, X, FileText, Phone, MessageSquare } from 'lucide-react';
-
-export default function Portfolio() {
-  const titles = [
-    "Founder & Lead Engineer @ Binale Digital Solutions",
-    "System Developer & Software Engineer",
-    "Linux Systems Administrator & Network Specialist",
-    "Cyber Security & ERP Systems Analyst"
-  ];
-
-  const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
-  const [currentText, setCurrentText] = useState('');
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [imageError, setImageError] = useState(false);
-
-  // Terminal Modal State
-  const [isTerminalOpen, setIsTerminalOpen] = useState(false);
-  const [inputVal, setInputVal] = useState('');
-  const [terminalHistory, setTerminalHistory] = useState<Array<{ React.ReactNode command?: output: string; }>>([
-    {
-      output: (
         <div className="text-slate-400 font-mono text-xs">
           <p className="text-cyan-400 font-bold">Welcome to Binale Digital Solutions Web CLI v1.0.0</p>
           <p className="text-xs">Type <span className="text-amber-400">help</span> to see available commands or <span className="text-amber-400">exit</span> to close.</p>
@@ -188,7 +121,7 @@ export default function Portfolio() {
           <div className="space-y-2 text-slate-300 text-xs font-mono">
             <p className="text-cyan-400 font-semibold">[+] FEATURED REPOSITORIES</p>
             <p>1. <span className="text-emerald-400 font-bold">[Completed]</span> CyberSentinel — Vulnerability Scanner & Auditor</p>
-            <p>   URL: [https://github.com/BINALE540/cybersentinel](https://github.com/BINALE540/cybersentinel)</p>
+            <p>   URL: https://github.com/BINALE540/cybersentinel</p>
             <p>2. <span className="text-emerald-400 font-bold">[Completed]</span> Maseno Foods Hub — PHP/MySQL Campus Platform</p>
           </div>
         );
@@ -240,8 +173,8 @@ export default function Portfolio() {
             <p><span className="text-cyan-400">Email:</span> rodneykbinalekhabanje@gmail.com</p>
             <p><span className="text-cyan-400">Calls:</span> +254 759 314 735</p>
             <p><span className="text-cyan-400">WhatsApp:</span> +254 757 468 025</p>
-            <p><span className="text-cyan-400">GitHub:</span> [https://github.com/BINALE540](https://github.com/BINALE540)</p>
-            <p><span className="text-cyan-400">LinkedIn:</span> [https://www.linkedin.com/in/binale-khabanje-84213a391](https://www.linkedin.com/in/binale-khabanje-84213a391)</p>
+            <p><span className="text-cyan-400">GitHub:</span> https://github.com/BINALE540</p>
+            <p><span className="text-cyan-400">LinkedIn:</span> https://www.linkedin.com/in/binale-khabanje-84213a391</p>
           </div>
         );
         break;
@@ -276,7 +209,7 @@ export default function Portfolio() {
     e.preventDefault();
 
     try {
-      const response = await fetch("[https://api.web3forms.com/submit](https://api.web3forms.com/submit)", {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -335,14 +268,14 @@ export default function Portfolio() {
       status: "Completed",
       description: "Modular security auditing CLI tool built in Python for Linux environments. Performs multi-threaded TCP port probing, HTTP security header auditing with automatic protocol fallback, local UFW firewall checks, and timestamped JSON exports.",
       tags: ["Python 3", "Sockets", "Threading", "Linux", "JSON"],
-      github: "[https://github.com/BINALE540/cybersentinel](https://github.com/BINALE540/cybersentinel)",
+      github: "https://github.com/BINALE540/cybersentinel",
     },
     {
       title: "Maseno Foods Hub — Campus Web Platform",
       status: "Completed",
       description: "Responsive web-based food ordering platform serving university students and local campus vendors. Designed relational MySQL database schemas, implemented secure session handling, and optimized backend query performance.",
       tags: ["PHP", "MySQL", "JavaScript", "HTML5", "CSS3"],
-      github: "[https://github.com/BINALE540](https://github.com/BINALE540)",
+      github: "https://github.com/BINALE540",
     },
   ];
 
@@ -378,7 +311,7 @@ export default function Portfolio() {
         
         {/* Hero Section */}
         <section id="about" className="space-y-8 pt-6">
-          {/* Vibrant Open to Roles Banner */}
+          {/* Open to Roles Banner */}
           <div className="inline-flex flex-wrap items-center gap-2 px-4 py-2 rounded-full border border-pink-500/30 bg-gradient-to-r from-pink-500/20 via-purple-500/20 to-cyan-500/20 text-xs font-mono shadow-lg shadow-purple-500/10">
             <span className="relative flex h-2.5 w-2.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
@@ -462,7 +395,7 @@ export default function Portfolio() {
           {/* Action Buttons */}
           <div className="flex flex-wrap gap-4 pt-2">
             <a 
-              href="[https://wa.me/254757468025](https://wa.me/254757468025)" 
+              href="https://wa.me/254757468025" 
               target="_blank" 
               rel="noreferrer" 
               className="flex items-center gap-2 px-4 py-2.5 rounded-lg border border-emerald-500/40 bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20 transition-all font-mono text-xs font-semibold"
@@ -694,7 +627,7 @@ export default function Portfolio() {
                 <span className="text-emerald-400 font-semibold block">💬 WhatsApp Instant Chat</span>
                 <p className="text-slate-300 text-sm font-bold">+254 757 468 025</p>
                 <a 
-                  href="[https://wa.me/254757468025](https://wa.me/254757468025)" 
+                  href="https://wa.me/254757468025" 
                   target="_blank" 
                   rel="noreferrer"
                   className="inline-block text-emerald-400 underline pt-1"
@@ -772,7 +705,7 @@ export default function Portfolio() {
       )}
 
       <footer className="border-t border-slate-800/80 py-8 text-center text-xs text-slate-500 font-mono">
-        © 2026 Binale Digital Solutions. All Rights Reserved. Lead Engineer: BINALE RODNEY KHABANJE.
+        © 2026 Binale Digital Solutions. All Rights Reserved. Lead Engineer: Rodney Binale Khabanje.
       </footer>
     </div>
   );
