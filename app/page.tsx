@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Mail, ExternalLink, Terminal as TerminalIcon, Cpu, FolderGit2, Globe, X, FileText, Phone, MessageSquare } from 'lucide-react';
+import { Mail, ExternalLink, Terminal as TerminalIcon, Cpu, FolderGit2, Globe, X, FileText, Phone, MessageSquare, Menu } from 'lucide-react';
 
 export default function Portfolio() {
   const titles = [
@@ -15,6 +15,7 @@ export default function Portfolio() {
   const [currentText, setCurrentText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
   const [imageError, setImageError] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Terminal Modal State
   const [isTerminalOpen, setIsTerminalOpen] = useState(false);
@@ -217,7 +218,7 @@ export default function Portfolio() {
           Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: "76ea6df0-e037-4de6-ba85-2e31ffcb17e5", // <--- Paste your Web3Forms Access Key here
+          access_key: "76ea6df0-e037-4de6-ba85-2e31ffcb17e5",
           name: formState.name,
           email: formState.email,
           subject: formState.subject,
@@ -284,29 +285,58 @@ export default function Portfolio() {
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-cyan-500 selection:text-slate-950">
       
       {/* Navigation Header */}
-      <header className="sticky top-0 z-50 backdrop-blur-md bg-slate-950/80 border-b border-slate-800/80 px-6 py-4">
-        <div className="max-w-5xl mx-auto flex justify-between items-center">
-          <button 
-            onClick={() => setIsTerminalOpen(true)}
-            title="Click or press Ctrl + ~ to open interactive shell"
-            className="flex items-center gap-2 text-cyan-400 font-mono font-bold text-base hover:text-cyan-300 transition-colors cursor-pointer group"
-          >
-            <TerminalIcon className="w-5 h-5 group-hover:scale-110 transition-transform"/>
-            <span>Binale Digital Solutions</span>
-            <span>(where Tech Meets Innovation)</span>
-            <span className="text-xs text-slate-500 font-normal hidden sm:inline ml-2 border border-slate-800 px-2 py-0.5 rounded bg-slate-900">
-              Ctrl + ~
-            </span>
-          </button>
+      <header className="sticky top-0 z-50 backdrop-blur-md bg-slate-950/90 border-b border-slate-800/80 px-4 sm:px-6 py-3.5">
+        <div className="max-w-5xl mx-auto flex justify-between items-center gap-2">
+          
+          {/* Left Branding & Slogan */}
+          <div className="flex items-center gap-2">
+            <button 
+              onClick={() => setIsTerminalOpen(true)}
+              title="Click or press Ctrl + ~ to open interactive shell"
+              className="flex items-center gap-2 text-cyan-400 font-mono font-bold text-sm sm:text-base hover:text-cyan-300 transition-colors cursor-pointer group"
+            >
+              <TerminalIcon className="w-5 h-5 group-hover:scale-110 transition-transform shrink-0"/>
+              <span className="flex flex-col sm:flex-row sm:items-center sm:gap-2 text-left">
+                <span className="text-white font-bold tracking-wide">Binale Digital Solutions</span>
+                <span className="text-xs font-mono text-cyan-400 font-normal">
+                  (where Tech Meets Innovation)
+                </span>
+              </span>
+              <span className="text-xs text-slate-500 font-normal hidden sm:inline ml-2 border border-slate-800 px-2 py-0.5 rounded bg-slate-900">
+                Ctrl + ~
+              </span>
+            </button>
+          </div>
 
-          <nav className="hidden md:flex gap-8 text-sm text-slate-400 font-medium">
+          {/* Desktop Navigation Links */}
+          <nav className="hidden md:flex gap-6 text-sm text-slate-400 font-medium">
             <a href="#about" className="hover:text-cyan-400 transition-colors">About</a>
             <a href="#skills" className="hover:text-cyan-400 transition-colors">Skills</a>
             <a href="#services" className="hover:text-cyan-400 transition-colors">Services</a>
             <a href="#projects" className="hover:text-cyan-400 transition-colors">Projects</a>
             <a href="#contact" className="hover:text-cyan-400 transition-colors">Contact</a>
           </nav>
+
+          {/* Mobile Hamburger Menu Button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden p-2 text-slate-400 hover:text-cyan-400 focus:outline-none"
+            aria-label="Toggle navigation menu"
+          >
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
+
+        {/* Mobile Dropdown Navigation Menu */}
+        {isMobileMenuOpen && (
+          <nav className="md:hidden mt-3 pt-3 border-t border-slate-800 flex flex-col gap-3 font-mono text-xs text-slate-300 bg-slate-950/95 p-4 rounded-xl">
+            <a href="#about" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-cyan-400 py-1">&gt; About</a>
+            <a href="#skills" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-cyan-400 py-1">&gt; Skills</a>
+            <a href="#services" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-cyan-400 py-1">&gt; Services</a>
+            <a href="#projects" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-cyan-400 py-1">&gt; Projects</a>
+            <a href="#contact" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-cyan-400 py-1">&gt; Contact</a>
+          </nav>
+        )}
       </header>
 
       <main className="max-w-5xl mx-auto px-6 py-12 space-y-24">
@@ -381,7 +411,6 @@ export default function Portfolio() {
             <div className="space-y-3 text-slate-300 leading-relaxed">
               <p className="flex items-center gap-1.5">
                 <span className="text-cyan-400 font-bold">Binale Digital Solutions</span>
-                <span className="text-slate-100"> </span>
                 <span className="inline-block w-2 h-4 bg-cyan-400 animate-pulse shadow-[0_0_10px_rgba(34,211,238,0.9)] ml-1" />
               </p>
               
