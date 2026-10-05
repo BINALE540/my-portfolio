@@ -216,7 +216,7 @@ export default function Portfolio() {
           Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: "YOUR_WEB3FORMS_ACCESS_KEY", // <--- Replace with your Web3Forms Access Key
+          access_key: "YOUR_WEB3FORMS_ACCESS_KEY", // <--- Paste your Web3Forms Access Key here
           name: formState.name,
           email: formState.email,
           subject: formState.subject,
@@ -311,7 +311,7 @@ export default function Portfolio() {
         
         {/* Hero Section */}
         <section id="about" className="space-y-8 pt-6">
-          {/* Open to Roles Banner */}
+          {/* Vibrant Open to Roles Banner */}
           <div className="inline-flex flex-wrap items-center gap-2 px-4 py-2 rounded-full border border-pink-500/30 bg-gradient-to-r from-pink-500/20 via-purple-500/20 to-cyan-500/20 text-xs font-mono shadow-lg shadow-purple-500/10">
             <span className="relative flex h-2.5 w-2.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
@@ -337,7 +337,7 @@ export default function Portfolio() {
                 <span className="inline-block w-2.5 h-6 bg-cyan-400 rounded-sm animate-pulse shadow-[0_0_12px_rgba(34,211,238,0.8)]" />
               </div>
 
-              <p className="text-slate-400 leading-relaxed text-sm md:text-base">
+              <p className="text-slate-400 leading-relaxed text-sm md:text-base font-sans">
                 Founder & Lead Systems Engineer at <span className="text-cyan-400 font-semibold">Binale Digital Solutions</span>. B.Sc. Information Systems Graduate from Maseno University (Evaluated Grade A Attachment at Kibabii University). We deliver custom system development, Linux infrastructure management, network security audits, and enterprise ERP integration.
               </p>
             </div>
@@ -386,7 +386,7 @@ export default function Portfolio() {
               <p><span className="text-amber-400">Company:</span> Binale Digital Solutions (BDS)</p>
               <p><span className="text-amber-400">Education:</span> B.Sc. Information Systems — Maseno University</p>
               <p><span className="text-amber-400">Specializations:</span> System Development, Linux Infrastructure, Network Engineering & ERP Systems</p>
-              <p className="text-slate-400 pt-2">
+              <p className="text-slate-400 pt-2 font-sans">
                 I bridge the gap between software development and systems engineering. From building web applications in PHP, Python, and Next.js to provisioning Linux servers, configuring UFW firewalls, and optimizing enterprise ERP workflows, I focus on building secure, efficient, and dependable digital operations.
               </p>
             </div>
@@ -467,7 +467,7 @@ export default function Portfolio() {
             {servicesList.map((service, idx) => (
               <div key={idx} className="p-6 rounded-xl border border-slate-800 bg-slate-900/40 space-y-3 hover:border-cyan-500/40 transition-all">
                 <h3 className="text-cyan-400 font-mono font-semibold text-sm">{service.title}</h3>
-                <p className="text-slate-400 text-xs leading-relaxed">{service.desc}</p>
+                <p className="text-slate-400 text-xs leading-relaxed font-sans">{service.desc}</p>
               </div>
             ))}
           </div>
@@ -613,14 +613,14 @@ export default function Portfolio() {
             <div className="space-y-4 font-mono text-xs">
               <div className="p-5 rounded-xl border border-slate-800 bg-slate-900/40 space-y-2">
                 <span className="text-cyan-400 font-semibold block">🏢 Binale Digital Solutions</span>
-                <p className="text-slate-300 text-xs">Custom System Development | Linux Infrastructure | Cyber Defense</p>
-                <p className="text-slate-500">Location: Bungoma / Kisumu, Kenya (Serving Global & Remote Clients)</p>
+                <p className="text-slate-300 text-xs font-sans">Custom System Development | Linux Infrastructure | Cyber Defense</p>
+                <p className="text-slate-500 font-sans">Location: Bungoma / Kisumu, Kenya (Serving Global & Remote Clients)</p>
               </div>
 
               <div className="p-5 rounded-xl border border-slate-800 bg-slate-900/40 space-y-2">
                 <span className="text-cyan-400 font-semibold block">🚀 Direct Calls</span>
                 <p className="text-slate-300 text-sm font-bold">+254 759 314 735</p>
-                <p className="text-slate-500">Available for phone discussions & interviews.</p>
+                <p className="text-slate-500 font-sans">Available for phone discussions & interviews.</p>
               </div>
 
               <div className="p-5 rounded-xl border border-slate-800 bg-slate-900/40 space-y-2">
@@ -630,7 +630,7 @@ export default function Portfolio() {
                   href="https://wa.me/254757468025" 
                   target="_blank" 
                   rel="noreferrer"
-                  className="inline-block text-emerald-400 underline pt-1"
+                  className="inline-block text-emerald-400 underline pt-1 font-sans"
                 >
                   Click to start WhatsApp chat
                 </a>
