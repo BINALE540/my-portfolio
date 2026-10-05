@@ -5,10 +5,10 @@ import { Mail, ExternalLink, Terminal as TerminalIcon, Cpu, FolderGit2, Globe, X
 
 export default function Portfolio() {
   const titles = [
-    "Information Systems Graduate",
+    "Founder & Lead Engineer @ Binale Digital Solutions",
     "System Developer & Software Engineer",
-    "SysAdmin & Network Engineer",
-    "Systems Security Specialist"
+    "Linux Systems Administrator & Network Specialist",
+    "Cyber Security & ERP Systems Analyst"
   ];
 
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
@@ -22,8 +22,75 @@ export default function Portfolio() {
   const [terminalHistory, setTerminalHistory] = useState<Array<{ command?: string; output: React.ReactNode }>>([
     {
       output: (
+        <div className="text-slate-400 font-mono text-xs space-y-1">
+          <p className="text-cyan-400 font-bold">Welcome to Binale Digital Solutions Web CLI v1.0.0</p>
+          <p className="text-xs">Type <span className="text-amber-400">help</span> to see available commands or <span className="text-amber-400">exit</span> to close.</p>
+        </div>
+      ),
+    },
+  ]);
+
+  const terminalEndRef = useRef<HTMLDivElement>(null);
+
+  // Contact Form State
+  const [formState, setFormState] = useState({ name: '', email: '', subject: '', message: '' });
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Typewriter effect
+  useEffect(() => {
+    const fullText = titles[currentTitleIndex];
+    const typingSpeed = isDeleting ? 30 : 70;
+
+    const timer = setTimeout(() => {
+      if (!isDeleting) {
+        setCurrentText(fullText.substring(0, currentText.length + 1));
+        if (currentText === fullText) {
+          setTimeout(() => setIsDeleting(true), 2000);
+        }
+      } else {
+        setCurrentText(fullText.substring(0, currentText.length - 1));
+        if (currentText === '')Here is the complete, fully updated **`app/page.tsx`** file incorporating all the features, custom styling, and branding updates:
+
+- **Company Branding:** Rebranded under **Binale Digital Solutions (BDS)** across the header, typewriter titles, bio, and CLI prompt (`sysadmin@binaledigital:~$`).
+- **Interactive Glowing Block Cursors:** Animated neon cyan cursors added to the typewriter hero, terminal text summary, and interactive Web CLI modal.
+- **Frosted Glassmorphism Project Cards:** Hover-activated gradient borders, backdrop blurs (`backdrop-blur-md`), ambient light halos, and pulsing live status badges.
+- **Fixed Profile Photo Extension:** Configured to reference `/profile.jpeg` with fallback avatar initials (`RBK`).
+- **Vibrant Open to Roles Banner:** Glowing pink/purple/cyan gradient pill.
+- **Interactive Web CLI Modal:** Terminal commands (`help`, `skills`, `projects`, `services`, `about`, `resume`, `contact`, `clear`, `exit`).
+- **Direct Contact & WhatsApp Actions:** Instant messaging links and call actions alongside the direct email form handler.
+
+---
+
+### Complete Code: `app/page.tsx`
+
+```tsx
+'use client';
+
+import React, { useState, useEffect, useRef } from 'react';
+import { Mail, ExternalLink, Terminal as TerminalIcon, Cpu, FolderGit2, Globe, X, FileText, Phone, MessageSquare } from 'lucide-react';
+
+export default function Portfolio() {
+  const titles = [
+    "Founder & Lead Engineer @ Binale Digital Solutions",
+    "System Developer & Software Engineer",
+    "Linux Systems Administrator & Network Specialist",
+    "Cyber Security & ERP Systems Analyst"
+  ];
+
+  const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
+  const [currentText, setCurrentText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [imageError, setImageError] = useState(false);
+
+  // Terminal Modal State
+  const [isTerminalOpen, setIsTerminalOpen] = useState(false);
+  const [inputVal, setInputVal] = useState('');
+  const [terminalHistory, setTerminalHistory] = useState<Array<{ React.ReactNode command?: output: string; }>>([
+    {
+      output: (
         <div className="text-slate-400 font-mono text-xs">
-          <p className="text-cyan-400 font-bold">Welcome to Rodney&apos;s Web CLI v1.0.0</p>
+          <p className="text-cyan-400 font-bold">Welcome to Binale Digital Solutions Web CLI v1.0.0</p>
           <p className="text-xs">Type <span className="text-amber-400">help</span> to see available commands or <span className="text-amber-400">exit</span> to close.</p>
         </div>
       ),
@@ -95,10 +162,9 @@ export default function Portfolio() {
             <p><span className="text-amber-400 w-28 inline-block">skills</span> - Output technical stack details</p>
             <p><span className="text-amber-400 w-28 inline-block">projects</span> - List featured engineering projects</p>
             <p><span className="text-amber-400 w-28 inline-block">services</span> - Display offered IT, ERP & Dev services</p>
-            <p><span className="text-amber-400 w-28 inline-block">about</span> - Display user profile details</p>
+            <p><span className="text-amber-400 w-28 inline-block">about</span> - Display company & founder details</p>
             <p><span className="text-amber-400 w-28 inline-block">resume</span> - Download Curriculum Vitae (PDF)</p>
-            <p><span className="text-amber-400 w-28 inline-block">ping cybersentinel</span> - Simulate live security probe</p>
-            <p><span className="text-amber-400 w-28 inline-block">contact</span> - Show contact details & phone lines</p>
+            <p><span className="text-amber-400 w-28 inline-block">contact</span> - Show direct phone & WhatsApp lines</p>
             <p><span className="text-amber-400 w-28 inline-block">clear</span> - Clear terminal screen</p>
             <p><span className="text-amber-400 w-28 inline-block">exit</span> - Close terminal overlay</p>
           </div>
@@ -122,7 +188,7 @@ export default function Portfolio() {
           <div className="space-y-2 text-slate-300 text-xs font-mono">
             <p className="text-cyan-400 font-semibold">[+] FEATURED REPOSITORIES</p>
             <p>1. <span className="text-emerald-400 font-bold">[Completed]</span> CyberSentinel — Vulnerability Scanner & Auditor</p>
-            <p>   URL: https://github.com/BINALE540/cybersentinel</p>
+            <p>   URL: [https://github.com/BINALE540/cybersentinel](https://github.com/BINALE540/cybersentinel)</p>
             <p>2. <span className="text-emerald-400 font-bold">[Completed]</span> Maseno Foods Hub — PHP/MySQL Campus Platform</p>
           </div>
         );
@@ -131,11 +197,11 @@ export default function Portfolio() {
       case 'services':
         responseOutput = (
           <div className="space-y-2 text-slate-300 text-xs font-mono">
-            <p className="text-cyan-400 font-bold">[+] OFFERED SERVICES & CORE COMPETENCIES</p>
-            <p>1. <span className="text-amber-400">System Development & Engineering:</span> Custom web application architecture, database design, and REST APIs.</p>
-            <p>2. <span className="text-amber-400">Systems Administration:</span> Linux/Windows environment setup, workstation provisioning, and server diagnostics.</p>
-            <p>3. <span className="text-amber-400">ERP Support & Integration:</span> Workflow onboarding, role-based user access controls, and database maintenance.</p>
-            <p>4. <span className="text-amber-400">Network Administration & Security:</span> LAN/WAN configuration, UFW firewalling, and threat mitigation.</p>
+            <p className="text-cyan-400 font-bold">[+] OFFERED SERVICES @ BINALE DIGITAL SOLUTIONS</p>
+            <p>1. <span className="text-amber-400">Custom System Development:</span> Web application architecture, database schemas, and REST APIs.</p>
+            <p>2. <span className="text-amber-400">Linux Systems Administration:</span> Workstation provisioning, server setup, and boot configs.</p>
+            <p>3. <span className="text-amber-400">ERP Support & Integration:</span> Workflow onboarding, user access controls, and database alignment.</p>
+            <p>4. <span className="text-amber-400">Network Security & Auditing:</span> Firewalling (UFW), socket probing, and threat mitigation.</p>
           </div>
         );
         break;
@@ -144,8 +210,8 @@ export default function Portfolio() {
         responseOutput = (
           <div className="text-slate-300 text-xs leading-relaxed space-y-1 font-mono">
             <p className="text-cyan-400 font-bold">Rodney Binale Khabanje</p>
-            <p>B.Sc. Information Systems — Maseno University.</p>
-            <p>Specialization: System Development, Linux Infrastructure, ERP Systems, and Network Security.</p>
+            <p>Founder & Lead Systems Engineer — Binale Digital Solutions</p>
+            <p>B.Sc. Information Systems — Maseno University (Grade A Attachment @ Kibabii Uni)</p>
           </div>
         );
         break;
@@ -155,7 +221,7 @@ export default function Portfolio() {
         responseOutput = (
           <div className="space-y-2 text-xs font-mono text-slate-300">
             <p className="text-cyan-400 font-bold">[+] RESUME / CV DOWNLOAD</p>
-            <p>Access my complete curriculum vitae (PDF):</p>
+            <p>Access Rodney Binale Khabanje&apos;s Curriculum Vitae (PDF):</p>
             <a 
               href="/Rodney_Binale_Khabanje_Cv.pdf" 
               target="_blank" 
@@ -174,8 +240,8 @@ export default function Portfolio() {
             <p><span className="text-cyan-400">Email:</span> rodneykbinalekhabanje@gmail.com</p>
             <p><span className="text-cyan-400">Calls:</span> +254 759 314 735</p>
             <p><span className="text-cyan-400">WhatsApp:</span> +254 757 468 025</p>
-            <p><span className="text-cyan-400">GitHub:</span> https://github.com/BINALE540</p>
-            <p><span className="text-cyan-400">LinkedIn:</span> https://www.linkedin.com/in/binale-khabanje-84213a391</p>
+            <p><span className="text-cyan-400">GitHub:</span> [https://github.com/BINALE540](https://github.com/BINALE540)</p>
+            <p><span className="text-cyan-400">LinkedIn:</span> [https://www.linkedin.com/in/binale-khabanje-84213a391](https://www.linkedin.com/in/binale-khabanje-84213a391)</p>
           </div>
         );
         break;
@@ -208,16 +274,16 @@ export default function Portfolio() {
 
   const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("[https://api.web3forms.com/submit](https://api.web3forms.com/submit)", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: "76ea6df0-e037-4de6-ba85-2e31ffcb17e5", // <--- PASTE YOUR KEY HERE
+          access_key: "YOUR_WEB3FORMS_ACCESS_KEY", // <--- Replace with your Web3Forms Access Key
           name: formState.name,
           email: formState.email,
           subject: formState.subject,
@@ -246,11 +312,11 @@ export default function Portfolio() {
 
   const servicesList = [
     {
-      title: "System Development & Engineering",
+      title: "Custom System Development & Engineering",
       desc: "Designing and building resilient web applications, custom software architecture, relational database schemas (MySQL/PostgreSQL), and RESTful API backends."
     },
     {
-      title: "Systems Administration & Setup",
+      title: "Linux Systems Administration & Infrastructure",
       desc: "Provisioning Linux and Windows workstations, managing disk partitioning, user access controls (RBAC), boot configs (UEFI/GRUB), and system health checks."
     },
     {
@@ -269,14 +335,14 @@ export default function Portfolio() {
       status: "Completed",
       description: "Modular security auditing CLI tool built in Python for Linux environments. Performs multi-threaded TCP port probing, HTTP security header auditing with automatic protocol fallback, local UFW firewall checks, and timestamped JSON exports.",
       tags: ["Python 3", "Sockets", "Threading", "Linux", "JSON"],
-      github: "https://github.com/BINALE540/cybersentinel",
+      github: "[https://github.com/BINALE540/cybersentinel](https://github.com/BINALE540/cybersentinel)",
     },
     {
       title: "Maseno Foods Hub — Campus Web Platform",
       status: "Completed",
       description: "Responsive web-based food ordering platform serving university students and local campus vendors. Designed relational MySQL database schemas, implemented secure session handling, and optimized backend query performance.",
       tags: ["PHP", "MySQL", "JavaScript", "HTML5", "CSS3"],
-      github: "https://github.com/BINALE540",
+      github: "[https://github.com/BINALE540](https://github.com/BINALE540)",
     },
   ];
 
@@ -291,8 +357,8 @@ export default function Portfolio() {
             title="Click or press Ctrl + ~ to open interactive shell"
             className="flex items-center gap-2 text-cyan-400 font-mono font-bold text-base hover:text-cyan-300 transition-colors cursor-pointer group"
           >
-            <TerminalIcon className="w-5 h-5 group-hover:scale-110 transition-transform" />
-            <span>welcome_to_my_portfolio:~#</span>
+            <TerminalIcon className="w-5 h-5 group-hover:scale-110 transition-transform"/>
+            <span>sysadmin@binaledigital:~#</span>
             <span className="text-xs text-slate-500 font-normal hidden sm:inline ml-2 border border-slate-800 px-2 py-0.5 rounded bg-slate-900">
               Ctrl + ~
             </span>
@@ -312,7 +378,7 @@ export default function Portfolio() {
         
         {/* Hero Section */}
         <section id="about" className="space-y-8 pt-6">
-          {/* Vibrant Gradient Open to Roles Banner */}
+          {/* Vibrant Open to Roles Banner */}
           <div className="inline-flex flex-wrap items-center gap-2 px-4 py-2 rounded-full border border-pink-500/30 bg-gradient-to-r from-pink-500/20 via-purple-500/20 to-cyan-500/20 text-xs font-mono shadow-lg shadow-purple-500/10">
             <span className="relative flex h-2.5 w-2.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
@@ -330,20 +396,20 @@ export default function Portfolio() {
             {/* Left Bio Info */}
             <div className="md:col-span-2 space-y-4">
               <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-white">
-                Hi, I&apos;m <span className="text-cyan-400">Rodney Binale</span>
+                Hi, I&apos;m <span className="text-cyan-400 drop-shadow-[0_0_12px_rgba(34,211,238,0.4)]">Rodney Binale</span>
               </h1>
               
-              <div className="text-xl text-cyan-400 font-mono h-8 flex items-center">
+              <div className="text-xl text-cyan-400 font-mono h-8 flex items-center gap-1">
                 <span>{currentText}</span>
-                <span className="animate-pulse ml-1 text-cyan-400 font-bold">|</span>
+                <span className="inline-block w-2.5 h-6 bg-cyan-400 rounded-sm animate-pulse shadow-[0_0_12px_rgba(34,211,238,0.8)]" />
               </div>
 
               <p className="text-slate-400 leading-relaxed text-sm md:text-base">
-                B.Sc. Information Systems Graduate from Maseno University. I specialize in custom system development, managing Linux environments, auditing network security, and supporting enterprise ERP workflows.
+                Founder & Lead Systems Engineer at <span className="text-cyan-400 font-semibold">Binale Digital Solutions</span>. B.Sc. Information Systems Graduate from Maseno University (Evaluated Grade A Attachment at Kibabii University). We deliver custom system development, Linux infrastructure management, network security audits, and enterprise ERP integration.
               </p>
             </div>
 
-            {/* Right Profile Frame (Glow Avatar Card with JPEG Support & Fallback) */}
+            {/* Right Profile Frame */}
             <div className="flex justify-center">
               <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-full p-1 bg-gradient-to-tr from-cyan-500 via-indigo-500 to-pink-500 shadow-2xl shadow-cyan-500/20">
                 <div className="w-full h-full rounded-full bg-slate-900 border border-slate-800 overflow-hidden relative flex items-center justify-center">
@@ -359,7 +425,7 @@ export default function Portfolio() {
                       <span className="text-3xl font-extrabold text-cyan-400 font-mono">RBK</span>
                       <span className="text-xs text-slate-400 mt-1 font-mono">Rodney Khabanje</span>
                       <span className="text-[10px] text-emerald-400 font-mono mt-1 border border-emerald-500/30 px-2 py-0.5 rounded-full bg-emerald-500/10">
-                        Grade A IT Specialist
+                        Binale Digital Solutions
                       </span>
                     </div>
                   )}
@@ -374,15 +440,21 @@ export default function Portfolio() {
               <span className="h-3 w-3 rounded-full bg-red-500/80 inline-block"></span>
               <span className="h-3 w-3 rounded-full bg-yellow-500/80 inline-block"></span>
               <span className="h-3 w-3 rounded-full bg-green-500/80 inline-block"></span>
-              <span className="ml-2 text-xs text-slate-500">about_me.txt</span>
+              <span className="ml-2 text-xs text-slate-500">profile_summary.sh</span>
             </div>
             
             <div className="space-y-3 text-slate-300 leading-relaxed">
-              <p><span className="text-cyan-400 font-bold">BINALE RODNEY KHABANJE</span> summary </p>
+              <p className="flex items-center gap-1.5">
+                <span className="text-cyan-400 font-bold">sysadmin@binaledigital:~$</span>
+                <span className="text-slate-100">./display_profile.sh</span>
+                <span className="inline-block w-2 h-4 bg-cyan-400 animate-pulse shadow-[0_0_10px_rgba(34,211,238,0.9)] ml-1" />
+              </p>
+              
+              <p><span className="text-amber-400">Company:</span> Binale Digital Solutions (BDS)</p>
               <p><span className="text-amber-400">Education:</span> B.Sc. Information Systems — Maseno University</p>
-              <p><span className="text-amber-400">Specializations:</span> System Development, Linux Infrastructure, ERP Systems, Network Engineering & Security</p>
+              <p><span className="text-amber-400">Specializations:</span> System Development, Linux Infrastructure, Network Engineering & ERP Systems</p>
               <p className="text-slate-400 pt-2">
-                I deliver hands-on IT infrastructure and software engineering—from custom system development and database setup to configuring UFW firewalls and optimizing business process workflows through ERP systems.
+                I bridge the gap between software development and systems engineering. From building web applications in PHP, Python, and Next.js to provisioning Linux servers, configuring UFW firewalls, and optimizing enterprise ERP workflows, I focus on building secure, efficient, and dependable digital operations.
               </p>
             </div>
           </div>
@@ -390,19 +462,19 @@ export default function Portfolio() {
           {/* Action Buttons */}
           <div className="flex flex-wrap gap-4 pt-2">
             <a 
-              href="https://wa.me/254757468025" 
+              href="[https://wa.me/254757468025](https://wa.me/254757468025)" 
               target="_blank" 
               rel="noreferrer" 
               className="flex items-center gap-2 px-4 py-2.5 rounded-lg border border-emerald-500/40 bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20 transition-all font-mono text-xs font-semibold"
             >
-              <MessageSquare className="w-4 h-4 text-emerald-400" /> WhatsApp (+254 757 468 025)
+              <MessageSquare className="w-4 h-4 text-emerald-400"/> WhatsApp (+254 757 468 025)
             </a>
 
             <a 
               href="tel:+254759314735" 
               className="flex items-center gap-2 px-4 py-2.5 rounded-lg border border-cyan-500/40 bg-cyan-500/10 text-cyan-400 hover:bg-cyan-500/20 transition-all font-mono text-xs font-semibold"
             >
-              <Phone className="w-4 h-4 text-cyan-400" /> Call (+254 759 314 735)
+              <Phone className="w-4 h-4 text-cyan-400"/> Call (+254 759 314 735)
             </a>
 
             <a 
@@ -412,7 +484,7 @@ export default function Portfolio() {
               rel="noreferrer"
               className="flex items-center gap-2 px-4 py-2.5 rounded-lg border border-slate-800 bg-slate-900 text-slate-300 hover:border-cyan-500/50 hover:text-cyan-400 transition-all font-mono text-xs"
             >
-              <FileText className="w-4 h-4 text-cyan-400" /> Download CV (PDF)
+              <FileText className="w-4 h-4 text-cyan-400"/> Download CV (PDF)
             </a>
 
             <button 
@@ -424,11 +496,11 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* Skills Section with Progress Bars */}
+        {/* Technical Skills Section */}
         <section id="skills" className="space-y-8">
           <div className="border-b border-slate-800 pb-4">
             <h2 className="text-2xl font-bold text-white flex items-center gap-2">
-              <Cpu className="w-6 h-6 text-cyan-400" /> Technical Skills & Competencies
+              <Cpu className="w-6 h-6 text-cyan-400"/> Technical Skills & Competencies
             </h2>
           </div>
 
@@ -450,11 +522,11 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* My Services Section */}
+        {/* Offered Services Section */}
         <section id="services" className="space-y-8">
           <div className="border-b border-slate-800 pb-4">
             <h2 className="text-2xl font-bold text-white flex items-center gap-2">
-              <Globe className="w-6 h-6 text-cyan-400" /> Offered Services
+              <Globe className="w-6 h-6 text-cyan-400"/> Offered Services @ Binale Digital Solutions
             </h2>
           </div>
 
@@ -468,36 +540,68 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* Featured Projects Section */}
+        {/* Featured Glassmorphic Projects Section */}
         <section id="projects" className="space-y-8">
           <div className="border-b border-slate-800 pb-4">
             <h2 className="text-2xl font-bold text-white flex items-center gap-2">
-              <FolderGit2 className="w-6 h-6 text-cyan-400" /> Featured Projects
+              <FolderGit2 className="w-6 h-6 text-cyan-400 drop-shadow-[0_0_8px_rgba(34,211,238,0.5)]"/> Featured Projects & Core Systems
             </h2>
           </div>
-          <div className="grid grid-cols-1 gap-6">
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {projects.map((project, idx) => (
-              <div key={idx} className="p-6 rounded-xl border border-slate-800 bg-slate-900/40 hover:border-cyan-500/40 transition-all space-y-4 group">
-                <div className="flex justify-between items-start gap-4">
-                  <div>
-                    <h3 className="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors">
-                      {project.title}
-                    </h3>
-                    <span className="inline-block mt-1 text-xs px-2.5 py-0.5 rounded font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
-                      ● {project.status}
-                    </span>
+              <div 
+                key={idx} 
+                className="relative group rounded-2xl p-0.5 bg-gradient-to-b from-white/10 via-slate-800/40 to-white/5 hover:from-cyan-500/50 hover:via-emerald-500/30 hover:to-indigo-500/50 transition-all duration-500 shadow-xl hover:shadow-[0_0_30px_rgba(34,211,238,0.2)]"
+              >
+                {/* Ambient Backlight Glow Effect */}
+                <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500/20 to-emerald-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                {/* Glass Card Container */}
+                <div className="relative h-full w-full bg-slate-900/70 backdrop-blur-md rounded-[15px] p-6 flex flex-col justify-between space-y-5 border border-white/5 group-hover:border-transparent transition-colors">
+                  
+                  {/* Header & Status Pill */}
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-start gap-4">
+                      <h3 className="text-lg font-bold text-white group-hover:text-cyan-300 transition-colors tracking-tight">
+                        {project.title}
+                      </h3>
+                      <a 
+                        href={project.github} 
+                        target="_blank" 
+                        rel="noreferrer" 
+                        className="p-2 text-slate-400 hover:text-cyan-400 hover:bg-cyan-500/10 rounded-lg backdrop-blur-sm border border-transparent hover:border-cyan-500/30 transition-all"
+                        title="View Source Repository"
+                      >
+                        <ExternalLink className="w-5 h-5"/>
+                      </a>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <span className="inline-flex items-center gap-1.5 text-[11px] font-mono px-3 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 shadow-[0_0_10px_rgba(52,211,153,0.15)]">
+                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                        {project.status}
+                      </span>
+                    </div>
                   </div>
-                  <a href={project.github} target="_blank" rel="noreferrer" className="p-2 text-slate-400 hover:text-cyan-400 transition-colors">
-                    <ExternalLink className="w-5 h-5" />
-                  </a>
-                </div>
-                <p className="text-slate-400 text-sm leading-relaxed">{project.description}</p>
-                <div className="flex flex-wrap gap-2 pt-2">
-                  {project.tags.map((tag, tIdx) => (
-                    <span key={tIdx} className="text-xs font-mono text-cyan-400/90 bg-cyan-950/40 border border-cyan-800/40 px-2.5 py-0.5 rounded">
-                      #{tag}
-                    </span>
-                  ))}
+
+                  {/* Description */}
+                  <p className="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+                    {project.description}
+                  </p>
+
+                  {/* Tech Tag Pills */}
+                  <div className="flex flex-wrap gap-2 pt-2 border-t border-slate-800/80">
+                    {project.tags.map((tag, tIdx) => (
+                      <span 
+                        key={tIdx} 
+                        className="text-[11px] font-mono text-cyan-300 bg-cyan-950/40 border border-cyan-800/50 px-2.5 py-1 rounded-md backdrop-blur-sm shadow-inner group-hover:border-cyan-500/40 transition-colors"
+                      >
+                        #{tag}
+                      </span>
+                    ))}
+                  </div>
+
                 </div>
               </div>
             ))}
@@ -508,12 +612,12 @@ export default function Portfolio() {
         <section id="contact" className="space-y-8 border-t border-slate-800 pt-12">
           <div className="border-b border-slate-800 pb-4">
             <h2 className="text-2xl font-bold text-white flex items-center gap-2">
-              <Mail className="w-6 h-6 text-cyan-400" /> Contact Me & Let&apos;s Work Together
+              <Mail className="w-6 h-6 text-cyan-400"/> Contact Me & Let&apos;s Work Together
             </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Left Contact Form */}
+            {/* Form */}
             <form onSubmit={handleContactSubmit} className="space-y-4 bg-slate-900/40 p-6 rounded-xl border border-slate-800">
               <div>
                 <label className="block text-xs font-mono text-slate-400 mb-1">Your Name</label>
@@ -575,6 +679,12 @@ export default function Portfolio() {
             {/* Right Contact Cards */}
             <div className="space-y-4 font-mono text-xs">
               <div className="p-5 rounded-xl border border-slate-800 bg-slate-900/40 space-y-2">
+                <span className="text-cyan-400 font-semibold block">🏢 Binale Digital Solutions</span>
+                <p className="text-slate-300 text-xs">Custom System Development | Linux Infrastructure | Cyber Defense</p>
+                <p className="text-slate-500">Location: Bungoma / Kisumu, Kenya (Serving Global & Remote Clients)</p>
+              </div>
+
+              <div className="p-5 rounded-xl border border-slate-800 bg-slate-900/40 space-y-2">
                 <span className="text-cyan-400 font-semibold block">🚀 Direct Calls</span>
                 <p className="text-slate-300 text-sm font-bold">+254 759 314 735</p>
                 <p className="text-slate-500">Available for phone discussions & interviews.</p>
@@ -584,19 +694,13 @@ export default function Portfolio() {
                 <span className="text-emerald-400 font-semibold block">💬 WhatsApp Instant Chat</span>
                 <p className="text-slate-300 text-sm font-bold">+254 757 468 025</p>
                 <a 
-                  href="https://wa.me/254757468025" 
+                  href="[https://wa.me/254757468025](https://wa.me/254757468025)" 
                   target="_blank" 
                   rel="noreferrer"
                   className="inline-block text-emerald-400 underline pt-1"
                 >
                   Click to start WhatsApp chat
                 </a>
-              </div>
-
-              <div className="p-5 rounded-xl border border-slate-800 bg-slate-900/40 space-y-2">
-                <span className="text-cyan-400 font-semibold block">✉️ Email Contact</span>
-                <p className="text-slate-300 text-xs">rodneykbinalekhabanje@gmail.com</p>
-                <p className="text-slate-500">Location: Bungoma / Kisumu, Kenya</p>
               </div>
             </div>
           </div>
@@ -615,13 +719,13 @@ export default function Portfolio() {
                 <span className="h-3 w-3 rounded-full bg-red-500/80 inline-block"></span>
                 <span className="h-3 w-3 rounded-full bg-yellow-500/80 inline-block"></span>
                 <span className="h-3 w-3 rounded-full bg-green-500/80 inline-block"></span>
-                <span className="ml-2 text-xs font-mono text-slate-400">rodney@binalerodney:~ (bash)</span>
+                <span className="ml-2 text-xs font-mono text-slate-400">sysadmin@binaledigital:~ (bash)</span>
               </div>
               <button 
                 onClick={() => setIsTerminalOpen(false)}
                 className="text-slate-400 hover:text-white transition-colors"
               >
-                <X className="w-5 h-5" />
+                <X className="w-5 h-5"/>
               </button>
             </div>
 
@@ -631,7 +735,7 @@ export default function Portfolio() {
                 <div key={index} className="space-y-1">
                   {item.command !== undefined && (
                     <div className="flex items-center gap-2 text-slate-300">
-                      <span className="text-cyan-400 font-bold">rodney@binalerodney:~$</span>
+                      <span className="text-cyan-400 font-bold">sysadmin@binaledigital:~$</span>
                       <span>{item.command}</span>
                     </div>
                   )}
@@ -639,17 +743,20 @@ export default function Portfolio() {
                 </div>
               ))}
               
-              {/* Input Line */}
+              {/* Input Line with Animated Glowing Cursor */}
               <form onSubmit={handleCommandSubmit} className="flex items-center gap-2 pt-2">
-                <span className="text-cyan-400 font-bold">rodney@binalerodney:~$</span>
-                <input
-                  type="text"
-                  value={inputVal}
-                  onChange={(e) => setInputVal(e.target.value)}
-                  autoFocus
-                  placeholder="Type 'help'..."
-                  className="flex-1 bg-transparent text-slate-100 outline-none font-mono text-sm"
-                />
+                <span className="text-cyan-400 font-bold">sysadmin@binaledigital:~$</span>
+                <div className="flex-1 flex items-center">
+                  <input
+                    type="text"
+                    value={inputVal}
+                    onChange={(e) => setInputVal(e.target.value)}
+                    autoFocus
+                    placeholder="Type 'help'..."
+                    className="bg-transparent text-slate-100 outline-none font-mono text-sm w-full"
+                  />
+                  <span className="inline-block w-2 h-4 bg-cyan-400 animate-pulse shadow-[0_0_10px_rgba(34,211,238,0.9)] -ml-1 pointer-events-none" />
+                </div>
               </form>
               <div ref={terminalEndRef} />
             </div>
@@ -665,7 +772,7 @@ export default function Portfolio() {
       )}
 
       <footer className="border-t border-slate-800/80 py-8 text-center text-xs text-slate-500 font-mono">
-        © 2026 Rodney Binale Khabanje. Deployed on Vercel.
+        © 2026 Binale Digital Solutions. All Rights Reserved. Lead Engineer: BINALE RODNEY KHABANJE.
       </footer>
     </div>
   );
