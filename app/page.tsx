@@ -123,6 +123,7 @@ export default function Portfolio() {
             <p>1. <span className="text-emerald-400 font-bold">[Completed]</span> CyberSentinel — Vulnerability Scanner & Auditor</p>
             <p>   URL: https://github.com/BINALE540/cybersentinel</p>
             <p>2. <span className="text-emerald-400 font-bold">[Completed]</span> Maseno Foods Hub — PHP/MySQL Campus Platform</p>
+            <p>   URL: https://maseno-connect.onrender.com</p>
           </div>
         );
         break;
@@ -142,9 +143,9 @@ export default function Portfolio() {
       case 'about':
         responseOutput = (
           <div className="text-slate-300 text-xs leading-relaxed space-y-1 font-mono">
-            <p className="text-cyan-400 font-bold">Rodney Binale Khabanje</p>
+            <p className="text-cyan-400 font-bold">Binale Rodney Khabanje</p>
             <p>Founder & Lead Systems Engineer — Binale Digital Solutions</p>
-            <p>B.Sc. Information Systems — Maseno University (Grade A Attachment @ Kibabii Uni)</p>
+            <p>B.Sc. Information Systems — Maseno University</p>
           </div>
         );
         break;
@@ -216,7 +217,7 @@ export default function Portfolio() {
           Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: "YOUR_WEB3FORMS_ACCESS_KEY", // <--- Paste your Web3Forms Access Key here
+          access_key: "76ea6df0-e037-4de6-ba85-2e31ffcb17e5", // <--- Paste your Web3Forms Access Key here
           name: formState.name,
           email: formState.email,
           subject: formState.subject,
@@ -275,7 +276,7 @@ export default function Portfolio() {
       status: "Completed",
       description: "Responsive web-based food ordering platform serving university students and local campus vendors. Designed relational MySQL database schemas, implemented secure session handling, and optimized backend query performance.",
       tags: ["PHP", "MySQL", "JavaScript", "HTML5", "CSS3"],
-      github: "https://github.com/BINALE540",
+      github: "https://maseno-connect.onrender.com",
     },
   ];
 
@@ -291,7 +292,8 @@ export default function Portfolio() {
             className="flex items-center gap-2 text-cyan-400 font-mono font-bold text-base hover:text-cyan-300 transition-colors cursor-pointer group"
           >
             <TerminalIcon className="w-5 h-5 group-hover:scale-110 transition-transform"/>
-            <span>sysadmin@binaledigital:~#</span>
+            <span>Binale Digital Solutions</span>
+            <span>(where Tech Meets Innovation)</span>
             <span className="text-xs text-slate-500 font-normal hidden sm:inline ml-2 border border-slate-800 px-2 py-0.5 rounded bg-slate-900">
               Ctrl + ~
             </span>
@@ -378,12 +380,13 @@ export default function Portfolio() {
             
             <div className="space-y-3 text-slate-300 leading-relaxed">
               <p className="flex items-center gap-1.5">
-                <span className="text-cyan-400 font-bold">sysadmin@binaledigital:~$</span>
-                <span className="text-slate-100">./display_profile.sh</span>
+                <span className="text-cyan-400 font-bold">Binale Digital Solutions</span>
+                <span className="text-slate-100"> </span>
                 <span className="inline-block w-2 h-4 bg-cyan-400 animate-pulse shadow-[0_0_10px_rgba(34,211,238,0.9)] ml-1" />
               </p>
               
               <p><span className="text-amber-400">Company:</span> Binale Digital Solutions (BDS)</p>
+              <p><span className="text-amber-400">Owner:</span> Binale Rodney Khabanje</p>
               <p><span className="text-amber-400">Education:</span> B.Sc. Information Systems — Maseno University</p>
               <p><span className="text-amber-400">Specializations:</span> System Development, Linux Infrastructure, Network Engineering & ERP Systems</p>
               <p className="text-slate-400 pt-2 font-sans">
@@ -652,7 +655,7 @@ export default function Portfolio() {
                 <span className="h-3 w-3 rounded-full bg-red-500/80 inline-block"></span>
                 <span className="h-3 w-3 rounded-full bg-yellow-500/80 inline-block"></span>
                 <span className="h-3 w-3 rounded-full bg-green-500/80 inline-block"></span>
-                <span className="ml-2 text-xs font-mono text-slate-400">sysadmin@binaledigital:~ (bash)</span>
+                <span className="ml-2 text-xs font-mono text-slate-400">Binale digital solutions (bash)</span>
               </div>
               <button 
                 onClick={() => setIsTerminalOpen(false)}
@@ -668,7 +671,7 @@ export default function Portfolio() {
                 <div key={index} className="space-y-1">
                   {item.command !== undefined && (
                     <div className="flex items-center gap-2 text-slate-300">
-                      <span className="text-cyan-400 font-bold">sysadmin@binaledigital:~$</span>
+                      <span className="text-cyan-400 font-bold">Binale digital solutions</span>
                       <span>{item.command}</span>
                     </div>
                   )}
@@ -678,7 +681,7 @@ export default function Portfolio() {
               
               {/* Input Line with Animated Glowing Cursor */}
               <form onSubmit={handleCommandSubmit} className="flex items-center gap-2 pt-2">
-                <span className="text-cyan-400 font-bold">sysadmin@binaledigital:~$</span>
+                <span className="text-cyan-400 font-bold">About the company</span>
                 <div className="flex-1 flex items-center">
                   <input
                     type="text"
