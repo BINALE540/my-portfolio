@@ -370,7 +370,7 @@ export default function Portfolio() {
               </div>
 
               <p className="text-slate-400 leading-relaxed text-sm md:text-base font-sans">
-                Founder & Lead Systems Engineer at <span className="text-cyan-400 font-semibold">Binale Digital Solutions</span>. B.Sc. Information Systems Graduate from Maseno University (Evaluated Grade A Attachment at Kibabii University). We deliver custom system development, Linux infrastructure management, network security audits, and enterprise ERP integration.
+                Founder & Lead Systems Engineer at <span className="text-cyan-400 font-semibold">Binale Digital Solutions</span>. B.Sc. Information Systems Graduate from Maseno University. We deliver custom system development, Linux infrastructure management, network security audits, and enterprise ERP integration.
               </p>
             </div>
 
