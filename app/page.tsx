@@ -6,9 +6,9 @@ import { Mail, ExternalLink, Terminal as TerminalIcon, Cpu, FolderGit2, Globe, X
 export default function Portfolio() {
   const titles = [
     "Founder & Lead Engineer @ BI-TECH Digital Solutions",
-    "System Developer & Software Engineer",
-    "Linux Systems Administrator & Network Specialist",
-    "Cyber Security & ERP Systems Analyst"
+    "Network & Systems Administrator",
+    "Software & Systems Developer",
+    "IT Support & ERP Systems Specialist"
   ];
 
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
@@ -24,8 +24,8 @@ export default function Portfolio() {
     {
       output: (
         <div className="text-slate-400 font-mono text-xs">
-          <p className="text-cyan-400 font-bold">Welcome to BI-TECH Digital Solutions Web CLI v1.0.0</p>
-          <p className="text-xs">Type <span className="text-amber-400">help</span> to see available commands or <span className="text-amber-400">exit</span> to close.</p>
+          <p className="text-cyan-400 font-bold">BI-TECH Digital Solutions — Web Shell Interface v1.0.0</p>
+          <p className="text-xs">Type <span className="text-amber-400">help</span> for commands or <span className="text-amber-400">exit</span> to close.</p>
         </div>
       ),
     },
@@ -93,13 +93,13 @@ export default function Portfolio() {
           <div className="space-y-1 text-slate-300 text-xs font-mono">
             <p className="text-cyan-400 font-semibold">Available Shell Commands:</p>
             <p><span className="text-amber-400 w-28 inline-block">help</span> - Display available commands</p>
-            <p><span className="text-amber-400 w-28 inline-block">skills</span> - Output technical stack details</p>
-            <p><span className="text-amber-400 w-28 inline-block">projects</span> - List featured engineering projects</p>
-            <p><span className="text-amber-400 w-28 inline-block">services</span> - Display offered IT, ERP & Dev services</p>
-            <p><span className="text-amber-400 w-28 inline-block">about</span> - Display company & founder details</p>
+            <p><span className="text-amber-400 w-28 inline-block">skills</span> - Output technical capabilities & stack</p>
+            <p><span className="text-amber-400 w-28 inline-block">projects</span> - List core engineering projects</p>
+            <p><span className="text-amber-400 w-28 inline-block">services</span> - Display BI-TECH IT & system services</p>
+            <p><span className="text-amber-400 w-28 inline-block">about</span> - Company overview & background</p>
             <p><span className="text-amber-400 w-28 inline-block">resume</span> - Download Curriculum Vitae (PDF)</p>
-            <p><span className="text-amber-400 w-28 inline-block">contact</span> - Show direct phone & WhatsApp lines</p>
-            <p><span className="text-amber-400 w-28 inline-block">clear</span> - Clear terminal screen</p>
+            <p><span className="text-amber-400 w-28 inline-block">contact</span> - Show direct contact details</p>
+            <p><span className="text-amber-400 w-28 inline-block">clear</span> - Clear terminal buffer</p>
             <p><span className="text-amber-400 w-28 inline-block">exit</span> - Close terminal overlay</p>
           </div>
         );
@@ -109,10 +109,10 @@ export default function Portfolio() {
         responseOutput = (
           <div className="space-y-1 text-slate-300 font-mono text-xs">
             <p className="text-cyan-400 font-semibold">[+] TECHNICAL SKILLS BREAKDOWN</p>
-            <p>├── <span className="text-amber-400">System Development:</span> PHP, Python 3, TypeScript, JavaScript, SQL, Bash</p>
-            <p>├── <span className="text-amber-400">SysAdmin & ERP:</span> Linux (Ubuntu), ERP Systems, SSH, UFW Firewall, Diagnostics</p>
-            <p>├── <span className="text-amber-400">Networking & Security:</span> TCP/IP, Sockets, HTTP/SSL Auditing, Forensics</p>
-            <p>└── <span className="text-amber-400">Web & Infrastructure:</span> Next.js, React, Node.js, Git, Vercel</p>
+            <p>├── <span className="text-amber-400">Network & Systems Admin:</span> LAN/WLAN, Subnetting, UFW Firewall, Linux (Ubuntu), SSH, Server Provisioning</p>
+            <p>├── <span className="text-amber-400">Systems Development:</span> Python 3, PHP, TypeScript, JavaScript, MySQL, PostgreSQL, REST APIs</p>
+            <p>├── <span className="text-amber-400">IT Support & ERP:</span> System Diagnostics, User Role Management, ERP Workflows, Enterprise Onboarding</p>
+            <p>└── <span className="text-amber-400">Active Pursuits:</span> Cybersecurity Concepts, Network Auditing, System Hardening</p>
           </div>
         );
         break;
@@ -120,10 +120,10 @@ export default function Portfolio() {
       case 'projects':
         responseOutput = (
           <div className="space-y-2 text-slate-300 text-xs font-mono">
-            <p className="text-cyan-400 font-semibold">[+] FEATURED REPOSITORIES</p>
-            <p>1. <span className="text-emerald-400 font-bold">[Completed]</span> CyberSentinel — Vulnerability Scanner & Auditor</p>
+            <p className="text-cyan-400 font-semibold">[+] CORE PROJECTS & SYSTEMS</p>
+            <p>1. <span className="text-emerald-400 font-bold">[Completed]</span> CyberSentinel — Modular Vulnerability & Network Auditor</p>
             <p>   URL: https://github.com/BINALE540/cybersentinel</p>
-            <p>2. <span className="text-emerald-400 font-bold">[Completed]</span> Maseno Foods Hub — PHP/MySQL Campus Platform</p>
+            <p>2. <span className="text-emerald-400 font-bold">[Completed]</span> Maseno Foods Hub — Campus System Platform</p>
             <p>   URL: https://maseno-connect.onrender.com</p>
           </div>
         );
@@ -133,10 +133,10 @@ export default function Portfolio() {
         responseOutput = (
           <div className="space-y-2 text-slate-300 text-xs font-mono">
             <p className="text-cyan-400 font-bold">[+] OFFERED SERVICES @ BI-TECH DIGITAL SOLUTIONS</p>
-            <p>1. <span className="text-amber-400">Custom System Development:</span> Web application architecture, database schemas, and REST APIs.</p>
-            <p>2. <span className="text-amber-400">Linux Systems Administration:</span> Workstation provisioning, server setup, and boot configs.</p>
-            <p>3. <span className="text-amber-400">ERP Support & Integration:</span> Workflow onboarding, user access controls, and database alignment.</p>
-            <p>4. <span className="text-amber-400">Network Security & Auditing:</span> Firewalling (UFW), socket probing, and threat mitigation.</p>
+            <p>1. <span className="text-amber-400">Network & Systems Administration:</span> Server setup, network configuration, and server health monitoring.</p>
+            <p>2. <span className="text-amber-400">Custom Systems Development:</span> Web application development, relational databases, and API backends.</p>
+            <p>3. <span className="text-amber-400">IT Support & ERP Operations:</span> Workstation setup, user provisioning, and enterprise ERP maintenance.</p>
+            <p>4. <span className="text-amber-400">Network Security Auditing:</span> Port testing, firewall configuration (UFW), and system hardening.</p>
           </div>
         );
         break;
@@ -144,9 +144,9 @@ export default function Portfolio() {
       case 'about':
         responseOutput = (
           <div className="text-slate-300 text-xs leading-relaxed space-y-1 font-mono">
-            <p className="text-cyan-400 font-bold">Binale Rodney Khabanje</p>
-            <p>Founder & Lead Systems Engineer — BI-TECH Digital Solutions</p>
-            <p>B.Sc. Information Systems — Maseno University</p>
+            <p className="text-cyan-400 font-bold">BI-TECH Digital Solutions</p>
+            <p>Founder & Lead Engineer: Binale Rodney Khabanje</p>
+            <p>Degree: B.Sc. Information Systems — Maseno University</p>
           </div>
         );
         break;
@@ -238,29 +238,28 @@ export default function Portfolio() {
   };
 
   const progressSkills = [
-    { name: "Linux System Administration (Ubuntu/Debian)", level: 92 },
-    { name: "System Development (Python, PHP, TS/JS, SQL)", level: 88 },
-    { name: "Networking (TCP/IP, Routing, UFW Firewall)", level: 85 },
-    { name: "ERP Support & Workflow Integration", level: 82 },
-    { name: "Cybersecurity, Hardening & Forensics", level: 80 }
+    { name: "Network & Systems Administration (Linux/Windows)", level: 92 },
+    { name: "Systems Development (Python, PHP, TS/JS, SQL)", level: 88 },
+    { name: "IT Support & ERP Operations", level: 85 },
+    { name: "Cybersecurity Concepts & System Hardening", level: 80 }
   ];
 
   const servicesList = [
     {
-      title: "Custom System Development & Engineering",
-      desc: "Designing and building resilient web applications, custom software architecture, relational database schemas (MySQL/PostgreSQL), and RESTful API backends."
+      title: "Network & Systems Administration",
+      desc: "Provisioning Linux/Windows server environments, managing network subnets, configuring UFW firewalls, managing SSH access, and monitoring server uptime."
     },
     {
-      title: "Linux Systems Administration & Infrastructure",
-      desc: "Provisioning Linux and Windows workstations, managing disk partitioning, user access controls (RBAC), boot configs (UEFI/GRUB), and system health checks."
+      title: "Custom Systems & Web Development",
+      desc: "Designing and engineering responsive web applications, custom software solutions, relational database schemas (MySQL/PostgreSQL), and RESTful APIs."
     },
     {
-      title: "ERP Platform Support & Integration",
-      desc: "Assisting with Enterprise Resource Planning (ERP) onboarding, user provisioning, workflow troubleshooting, and system database alignment."
+      title: "Enterprise IT Support & ERP Operations",
+      desc: "Providing end-to-end IT support, workstation provisioning, user access management, and assisting with Enterprise Resource Planning (ERP) workflows."
     },
     {
-      title: "Network Security & Cyber Defense",
-      desc: "Configuring UFW firewalls, conducting socket probing and HTTP header security audits, network troubleshooting, and basic digital forensics."
+      title: "Network Security & System Auditing",
+      desc: "Conducting socket port checks, verifying HTTP header security, configuring firewall access rules, and exploring threat mitigation techniques."
     }
   ];
 
@@ -345,7 +344,8 @@ export default function Portfolio() {
         
         {/* Hero Section */}
         <section id="about" className="space-y-8 pt-6">
-          {/* Vibrant Open to Roles Banner */}
+          
+          {/* Matched Open to Roles Banner */}
           <div className="inline-flex flex-wrap items-center gap-2 px-4 py-2 rounded-full border border-pink-500/30 bg-gradient-to-r from-pink-500/20 via-purple-500/20 to-cyan-500/20 text-xs font-mono shadow-lg shadow-purple-500/10">
             <span className="relative flex h-2.5 w-2.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
@@ -354,7 +354,7 @@ export default function Portfolio() {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-300 to-cyan-400 font-bold">
               OPEN TO ROLES:
             </span>
-            <span className="text-slate-200">System Developer | Linux SysAdmin | Network Engineering | Cyber Defense</span>
+            <span className="text-slate-200">Network & Systems Admin | Systems Developer | IT Support & ERP Operations</span>
             <span className="text-slate-500 hidden sm:inline">|</span>
             <span className="text-cyan-400 font-semibold">Kenya / Remote / Hybrid</span>
           </div>
@@ -372,7 +372,7 @@ export default function Portfolio() {
               </div>
 
               <p className="text-slate-400 leading-relaxed text-sm md:text-base font-sans">
-                Founder & Lead Systems Engineer at <span className="bg-gradient-to-r from-cyan-400 to-teal-300 bg-clip-text text-transparent font-extrabold tracking-wider">BI-TECH Digital Solutions</span>. B.Sc. Information Systems Graduate from Maseno University. We deliver custom system development, Linux infrastructure management, network security audits, and enterprise ERP integration.
+                Founder & Lead Systems Engineer at <span className="bg-gradient-to-r from-cyan-400 to-teal-300 bg-clip-text text-transparent font-extrabold tracking-wider">BI-TECH Digital Solutions</span>. B.Sc. Information Systems Graduate from Maseno University. We deliver network and systems administration, custom software development, IT support, Linux infrastructure management, and ERP integration.
               </p>
             </div>
 
@@ -401,28 +401,29 @@ export default function Portfolio() {
             </div>
           </div>
 
-          {/* Terminal Box Style About */}
+          {/* Disguised Custom Terminal Box */}
           <div className="p-6 rounded-xl border border-slate-800 bg-slate-900/60 font-mono text-sm space-y-4 shadow-xl">
             <div className="text-slate-400 border-b border-slate-800 pb-3 flex items-center gap-2">
               <span className="h-3 w-3 rounded-full bg-red-500/80 inline-block"></span>
               <span className="h-3 w-3 rounded-full bg-yellow-500/80 inline-block"></span>
               <span className="h-3 w-3 rounded-full bg-green-500/80 inline-block"></span>
-              <span className="ml-2 text-xs text-slate-500">profile_summary.sh</span>
+              <span className="ml-2 text-xs text-slate-500">company_overview.sh</span>
             </div>
             
             <div className="space-y-3 text-slate-300 leading-relaxed">
               <p className="flex items-center gap-1.5">
-                <span className="text-cyan-400 font-bold">sysadmin@bitech:~$</span>
-                <span className="text-slate-100">./display_profile.sh</span>
+                <span className="text-cyan-400 font-bold">bitech-admin@core:~#</span>
+                <span className="text-slate-100">./init_company_info.sh</span>
                 <span className="inline-block w-2 h-4 bg-cyan-400 animate-pulse shadow-[0_0_10px_rgba(34,211,238,0.9)] ml-1" />
               </p>
               
-              <p><span className="text-amber-400">Company:</span> BI-TECH Digital Solutions</p>
-              <p><span className="text-amber-400">Owner:</span> Binale Rodney Khabanje</p>
+              <p><span className="text-amber-400">Enterprise:</span> BI-TECH Digital Solutions</p>
+              <p><span className="text-amber-400">Lead Engineer:</span> Binale Rodney Khabanje</p>
               <p><span className="text-amber-400">Education:</span> B.Sc. Information Systems — Maseno University</p>
-              <p><span className="text-amber-400">Specializations:</span> System Development, Linux Infrastructure, Network Engineering & ERP Systems</p>
-              <p className="text-slate-400 pt-2 font-sans">
-                I bridge the gap between software development and systems engineering. From building web applications in PHP, Python, and Next.js to provisioning Linux servers, configuring UFW firewalls, and optimizing enterprise ERP workflows, I focus on building secure, efficient, and dependable digital operations.
+              <p><span className="text-amber-400">Core Expertise:</span> Network & Systems Administration, Software Dev, IT Support & ERP Operations</p>
+              <p><span className="text-amber-400">Active Learning:</span> Cybersecurity Concepts, Network Auditing & System Hardening</p>
+              <p className="text-slate-400 pt-2 font-sans text-xs sm:text-sm">
+                I bridge software engineering and systems operation. Backed by a B.Sc. in Information Systems, I configure and manage network infrastructure, handle Linux/Windows server administration, provide technical IT support, and build responsive web applications—while actively expanding my knowledge in cybersecurity and threat mitigation.
               </p>
             </div>
           </div>
@@ -648,7 +649,7 @@ export default function Portfolio() {
             <div className="space-y-4 font-mono text-xs">
               <div className="p-5 rounded-xl border border-slate-800 bg-slate-900/40 space-y-2">
                 <span className="text-cyan-400 font-semibold block">🏢 BI-TECH Digital Solutions</span>
-                <p className="text-slate-300 text-xs font-sans">Custom System Development | Linux Infrastructure | Cyber Defense</p>
+                <p className="text-slate-300 text-xs font-sans">Network & Systems Administration | Custom Development | IT Support</p>
                 <p className="text-slate-500 font-sans">Location: Bungoma / Kisumu, Kenya (Serving Global & Remote Clients)</p>
               </div>
 
@@ -687,7 +688,7 @@ export default function Portfolio() {
                 <span className="h-3 w-3 rounded-full bg-red-500/80 inline-block"></span>
                 <span className="h-3 w-3 rounded-full bg-yellow-500/80 inline-block"></span>
                 <span className="h-3 w-3 rounded-full bg-green-500/80 inline-block"></span>
-                <span className="ml-2 text-xs font-mono text-slate-400">sysadmin@bitech:~ (bash)</span>
+                <span className="ml-2 text-xs font-mono text-slate-400">bitech-admin@core:~ (bash)</span>
               </div>
               <button 
                 onClick={() => setIsTerminalOpen(false)}
@@ -703,7 +704,7 @@ export default function Portfolio() {
                 <div key={index} className="space-y-1">
                   {item.command !== undefined && (
                     <div className="flex items-center gap-2 text-slate-300">
-                      <span className="text-cyan-400 font-bold">sysadmin@bitech:~$</span>
+                      <span className="text-cyan-400 font-bold">bitech-admin@core:~$</span>
                       <span>{item.command}</span>
                     </div>
                   )}
@@ -713,7 +714,7 @@ export default function Portfolio() {
               
               {/* Input Line with Animated Glowing Cursor */}
               <form onSubmit={handleCommandSubmit} className="flex items-center gap-2 pt-2">
-                <span className="text-cyan-400 font-bold">sysadmin@bitech:~$</span>
+                <span className="text-cyan-400 font-bold">bitech-admin@core:~$</span>
                 <div className="flex-1 flex items-center">
                   <input
                     type="text"
