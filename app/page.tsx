@@ -5,7 +5,7 @@ import { Mail, ExternalLink, Terminal as TerminalIcon, Cpu, FolderGit2, Globe, X
 
 export default function Portfolio() {
   const titles = [
-    "Founder & Lead Engineer @ Binale Digital Solutions",
+    "Founder & Lead Engineer @ BI-TECH Digital Solutions",
     "System Developer & Software Engineer",
     "Linux Systems Administrator & Network Specialist",
     "Cyber Security & ERP Systems Analyst"
@@ -24,7 +24,7 @@ export default function Portfolio() {
     {
       output: (
         <div className="text-slate-400 font-mono text-xs">
-          <p className="text-cyan-400 font-bold">Welcome to Binale Digital Solutions Web CLI v1.0.0</p>
+          <p className="text-cyan-400 font-bold">Welcome to BI-TECH Digital Solutions Web CLI v1.0.0</p>
           <p className="text-xs">Type <span className="text-amber-400">help</span> to see available commands or <span className="text-amber-400">exit</span> to close.</p>
         </div>
       ),
@@ -132,7 +132,7 @@ export default function Portfolio() {
       case 'services':
         responseOutput = (
           <div className="space-y-2 text-slate-300 text-xs font-mono">
-            <p className="text-cyan-400 font-bold">[+] OFFERED SERVICES @ BINALE DIGITAL SOLUTIONS</p>
+            <p className="text-cyan-400 font-bold">[+] OFFERED SERVICES @ BI-TECH DIGITAL SOLUTIONS</p>
             <p>1. <span className="text-amber-400">Custom System Development:</span> Web application architecture, database schemas, and REST APIs.</p>
             <p>2. <span className="text-amber-400">Linux Systems Administration:</span> Workstation provisioning, server setup, and boot configs.</p>
             <p>3. <span className="text-amber-400">ERP Support & Integration:</span> Workflow onboarding, user access controls, and database alignment.</p>
@@ -145,7 +145,7 @@ export default function Portfolio() {
         responseOutput = (
           <div className="text-slate-300 text-xs leading-relaxed space-y-1 font-mono">
             <p className="text-cyan-400 font-bold">Binale Rodney Khabanje</p>
-            <p>Founder & Lead Systems Engineer — Binale Digital Solutions</p>
+            <p>Founder & Lead Systems Engineer — BI-TECH Digital Solutions</p>
             <p>B.Sc. Information Systems — Maseno University</p>
           </div>
         );
@@ -288,21 +288,23 @@ export default function Portfolio() {
       <header className="sticky top-0 z-50 backdrop-blur-md bg-slate-950/90 border-b border-slate-800/80 px-4 sm:px-6 py-3.5">
         <div className="max-w-5xl mx-auto flex justify-between items-center gap-2">
           
-          {/* Left Branding & Slogan */}
+          {/* Left Branding & Styled BI-TECH Logo */}
           <div className="flex items-center gap-2">
             <button 
               onClick={() => setIsTerminalOpen(true)}
               title="Click or press Ctrl + ~ to open interactive shell"
-              className="flex items-center gap-2 text-cyan-400 font-mono font-bold text-sm sm:text-base hover:text-cyan-300 transition-colors cursor-pointer group"
+              className="flex items-center gap-2.5 text-cyan-400 font-mono font-bold text-sm sm:text-base hover:text-cyan-300 transition-colors cursor-pointer group"
             >
-              <TerminalIcon className="w-5 h-5 group-hover:scale-110 transition-transform shrink-0"/>
+              <TerminalIcon className="w-5 h-5 text-cyan-400 group-hover:scale-110 transition-transform shrink-0 drop-shadow-[0_0_8px_rgba(34,211,238,0.6)]" />
               <span className="flex flex-col sm:flex-row sm:items-center sm:gap-2 text-left">
-                <span className="text-white font-bold tracking-wide">Binale Digital Solutions</span>
-                <span className="text-xs font-mono text-cyan-400 font-normal">
-                  (where Tech Meets Innovation)
+                <span className="text-lg sm:text-xl font-extrabold tracking-wider bg-gradient-to-r from-cyan-400 via-teal-300 to-indigo-400 bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(34,211,238,0.5)]">
+                  BI-TECH
+                </span>
+                <span className="text-xs font-mono text-slate-300 font-normal">
+                  Digital Solutions <span className="text-cyan-400/90 font-mono">(Where Tech Meets Innovation)</span>
                 </span>
               </span>
-              <span className="text-xs text-slate-500 font-normal hidden sm:inline ml-2 border border-slate-800 px-2 py-0.5 rounded bg-slate-900">
+              <span className="text-[10px] text-slate-500 font-normal hidden lg:inline ml-1 border border-slate-800 px-2 py-0.5 rounded bg-slate-900">
                 Ctrl + ~
               </span>
             </button>
@@ -370,7 +372,7 @@ export default function Portfolio() {
               </div>
 
               <p className="text-slate-400 leading-relaxed text-sm md:text-base font-sans">
-                Founder & Lead Systems Engineer at <span className="text-cyan-400 font-semibold">Binale Digital Solutions</span>. B.Sc. Information Systems Graduate from Maseno University. We deliver custom system development, Linux infrastructure management, network security audits, and enterprise ERP integration.
+                Founder & Lead Systems Engineer at <span className="bg-gradient-to-r from-cyan-400 to-teal-300 bg-clip-text text-transparent font-extrabold tracking-wider">BI-TECH Digital Solutions</span>. B.Sc. Information Systems Graduate from Maseno University. We deliver custom system development, Linux infrastructure management, network security audits, and enterprise ERP integration.
               </p>
             </div>
 
@@ -390,7 +392,7 @@ export default function Portfolio() {
                       <span className="text-3xl font-extrabold text-cyan-400 font-mono">RBK</span>
                       <span className="text-xs text-slate-400 mt-1 font-mono">Rodney Khabanje</span>
                       <span className="text-[10px] text-emerald-400 font-mono mt-1 border border-emerald-500/30 px-2 py-0.5 rounded-full bg-emerald-500/10">
-                        Binale Digital Solutions
+                        BI-TECH Digital Solutions
                       </span>
                     </div>
                   )}
@@ -410,11 +412,12 @@ export default function Portfolio() {
             
             <div className="space-y-3 text-slate-300 leading-relaxed">
               <p className="flex items-center gap-1.5">
-                <span className="text-cyan-400 font-bold">Binale Digital Solutions</span>
+                <span className="text-cyan-400 font-bold">sysadmin@bitech:~$</span>
+                <span className="text-slate-100">./display_profile.sh</span>
                 <span className="inline-block w-2 h-4 bg-cyan-400 animate-pulse shadow-[0_0_10px_rgba(34,211,238,0.9)] ml-1" />
               </p>
               
-              <p><span className="text-amber-400">Company:</span> Binale Digital Solutions (BDS)</p>
+              <p><span className="text-amber-400">Company:</span> BI-TECH Digital Solutions</p>
               <p><span className="text-amber-400">Owner:</span> Binale Rodney Khabanje</p>
               <p><span className="text-amber-400">Education:</span> B.Sc. Information Systems — Maseno University</p>
               <p><span className="text-amber-400">Specializations:</span> System Development, Linux Infrastructure, Network Engineering & ERP Systems</p>
@@ -491,7 +494,7 @@ export default function Portfolio() {
         <section id="services" className="space-y-8">
           <div className="border-b border-slate-800 pb-4">
             <h2 className="text-2xl font-bold text-white flex items-center gap-2">
-              <Globe className="w-6 h-6 text-cyan-400"/> Offered Services @ Binale Digital Solutions
+              <Globe className="w-6 h-6 text-cyan-400"/> Offered Services @ BI-TECH Digital Solutions
             </h2>
           </div>
 
@@ -644,7 +647,7 @@ export default function Portfolio() {
             {/* Right Contact Cards */}
             <div className="space-y-4 font-mono text-xs">
               <div className="p-5 rounded-xl border border-slate-800 bg-slate-900/40 space-y-2">
-                <span className="text-cyan-400 font-semibold block">🏢 Binale Digital Solutions</span>
+                <span className="text-cyan-400 font-semibold block">🏢 BI-TECH Digital Solutions</span>
                 <p className="text-slate-300 text-xs font-sans">Custom System Development | Linux Infrastructure | Cyber Defense</p>
                 <p className="text-slate-500 font-sans">Location: Bungoma / Kisumu, Kenya (Serving Global & Remote Clients)</p>
               </div>
@@ -684,7 +687,7 @@ export default function Portfolio() {
                 <span className="h-3 w-3 rounded-full bg-red-500/80 inline-block"></span>
                 <span className="h-3 w-3 rounded-full bg-yellow-500/80 inline-block"></span>
                 <span className="h-3 w-3 rounded-full bg-green-500/80 inline-block"></span>
-                <span className="ml-2 text-xs font-mono text-slate-400">Binale digital solutions (bash)</span>
+                <span className="ml-2 text-xs font-mono text-slate-400">sysadmin@bitech:~ (bash)</span>
               </div>
               <button 
                 onClick={() => setIsTerminalOpen(false)}
@@ -700,7 +703,7 @@ export default function Portfolio() {
                 <div key={index} className="space-y-1">
                   {item.command !== undefined && (
                     <div className="flex items-center gap-2 text-slate-300">
-                      <span className="text-cyan-400 font-bold">Binale digital solutions</span>
+                      <span className="text-cyan-400 font-bold">sysadmin@bitech:~$</span>
                       <span>{item.command}</span>
                     </div>
                   )}
@@ -710,7 +713,7 @@ export default function Portfolio() {
               
               {/* Input Line with Animated Glowing Cursor */}
               <form onSubmit={handleCommandSubmit} className="flex items-center gap-2 pt-2">
-                <span className="text-cyan-400 font-bold">About the company</span>
+                <span className="text-cyan-400 font-bold">sysadmin@bitech:~$</span>
                 <div className="flex-1 flex items-center">
                   <input
                     type="text"
@@ -737,7 +740,7 @@ export default function Portfolio() {
       )}
 
       <footer className="border-t border-slate-800/80 py-8 text-center text-xs text-slate-500 font-mono">
-        © 2026 Binale Digital Solutions. All Rights Reserved. Lead Engineer: Rodney Binale Khabanje.
+        © 2026 BI-TECH Digital Solutions. All Rights Reserved. Lead Engineer: Rodney Binale Khabanje.
       </footer>
     </div>
   );
