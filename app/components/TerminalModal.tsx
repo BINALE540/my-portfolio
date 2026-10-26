@@ -1,3 +1,4 @@
+// app/components/TerminalModal.tsx
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
@@ -8,16 +9,17 @@ interface TerminalModalProps {
   isOpen: boolean;
   onClose: () => void;
   darkMode: boolean;
+  setDarkMode: (val: boolean) => void;
 }
 
-export const TerminalModal: React.FC<TerminalModalProps> = ({ isOpen, onClose, darkMode }) => {
+export const TerminalModal: React.FC<TerminalModalProps> = ({ isOpen, onClose, darkMode, setDarkMode }) => {
   const [inputVal, setInputVal] = useState('');
   const [terminalHistory, setTerminalHistory] = useState<Array<{ command?: string; output: React.ReactNode }>>([
     {
       output: (
         <div className="text-slate-400 font-mono text-xs">
-          <p className="text-cyan-400 font-bold">BI-TECH Digital Solutions — Web Shell Interface v1.0.0</p>
-          <p className="text-xs">Type <span className="text-amber-400">help</span> for commands or <span className="text-amber-400">exit</span> to close.</p>
+          <p className="text-cyan-400 font-bold">BI-TECH Digital Solutions — Web Shell Interface v1.1.0</p>
+          <p className="text-xs">Type <span className="text-amber-400">help</span> for commands, <span className="text-amber-400">certs</span> for Cisco records, or <span className="text-amber-400">exit</span> to close.</p>
         </div>
       ),
     },
@@ -40,105 +42,128 @@ export const TerminalModal: React.FC<TerminalModalProps> = ({ isOpen, onClose, d
 
     let responseOutput: React.ReactNode = null;
 
-    switch (cmd) {
-      case 'help':
-        responseOutput = (
-          <div className="space-y-1 text-slate-300 text-xs font-mono">
-            <p className="text-cyan-400 font-semibold">Available Shell Commands:</p>
-            <p><span className="text-amber-400 w-28 inline-block">help</span> - Display available commands</p>
-            <p><span className="text-amber-400 w-28 inline-block">skills</span> - Technical capabilities & certifications</p>
-            <p><span className="text-amber-400 w-28 inline-block">projects</span> - Core engineering & ERP projects</p>
-            <p><span className="text-amber-400 w-28 inline-block">services</span> - BI-TECH IT & system services</p>
-            <p><span className="text-amber-400 w-28 inline-block">about</span> - Company overview & education</p>
-            <p><span className="text-amber-400 w-28 inline-block">resume</span> - Download Curriculum Vitae (PDF)</p>
-            <p><span className="text-amber-400 w-28 inline-block">contact</span> - Direct contact details</p>
-            <p><span className="text-amber-400 w-28 inline-block">clear</span> - Clear terminal buffer</p>
-            <p><span className="text-amber-400 w-28 inline-block">exit</span> - Close terminal overlay</p>
-          </div>
-        );
-        break;
+    if (cmd === 'theme light') {
+      setDarkMode(false);
+      responseOutput = <p className="text-emerald-400 text-xs font-mono">✓ Theme switched to Enterprise Light Mode.</p>;
+    } else if (cmd === 'theme dark') {
+      setDarkMode(true);
+      responseOutput = <p className="text-cyan-400 text-xs font-mono">✓ Theme switched to Cyber Dark Mode.</p>;
+    } else {
+      switch (cmd) {
+        case 'help':
+          responseOutput = (
+            <div className="space-y-1 text-slate-300 text-xs font-mono">
+              <p className="text-cyan-400 font-semibold">Available Shell Commands:</p>
+              <p><span className="text-amber-400 w-28 inline-block">help</span> - Display available commands</p>
+              <p><span className="text-amber-400 w-28 inline-block">certs</span> - Display Cisco certifications</p>
+              <p><span className="text-amber-400 w-28 inline-block">theme light</span> - Switch interface to Light mode</p>
+              <p><span className="text-amber-400 w-28 inline-block">theme dark</span> - Switch interface to Dark mode</p>
+              <p><span className="text-amber-400 w-28 inline-block">skills</span> - Technical capabilities breakdown</p>
+              <p><span className="text-amber-400 w-28 inline-block">projects</span> - Core engineering & ERP projects</p>
+              <p><span className="text-amber-400 w-28 inline-block">services</span> - BI-TECH IT & system services</p>
+              <p><span className="text-amber-400 w-28 inline-block">about</span> - Company overview & background</p>
+              <p><span className="text-amber-400 w-28 inline-block">resume</span> - Download Curriculum Vitae (PDF)</p>
+              <p><span className="text-amber-400 w-28 inline-block">contact</span> - Direct contact channels</p>
+              <p><span className="text-amber-400 w-28 inline-block">clear</span> - Clear terminal buffer</p>
+              <p><span className="text-amber-400 w-28 inline-block">exit</span> - Close shell overlay</p>
+            </div>
+          );
+          break;
 
-      case 'skills':
-        responseOutput = (
-          <div className="space-y-1 text-slate-300 font-mono text-xs">
-            <p className="text-cyan-400 font-semibold">[+] TECHNICAL SKILLS & CERTIFICATIONS</p>
-            {PROGRESS_SKILLS.map((s, idx) => (
-              <p key={idx}>├── <span className="text-amber-400">{s.name}:</span> {s.level}%</p>
-            ))}
-            <p>└── <span className="text-amber-400">Cisco Certs:</span> {PERSONAL_BIO.certifications.join(', ')}</p>
-          </div>
-        );
-        break;
+        case 'certs':
+        case 'certifications':
+          responseOutput = (
+            <div className="space-y-1 text-slate-300 font-mono text-xs">
+              <p className="text-cyan-400 font-semibold">[+] CISCO NETWORKING ACADEMY CERTIFICATIONS</p>
+              {PERSONAL_BIO.certifications.map((c, idx) => (
+                <p key={idx}>├── <span className="text-amber-400">{c.name}</span> ({c.date})</p>
+              ))}
+            </div>
+          );
+          break;
 
-      case 'projects':
-        responseOutput = (
-          <div className="space-y-2 text-slate-300 text-xs font-mono">
-            <p className="text-cyan-400 font-semibold">[+] CORE PROJECTS & OPERATIONS</p>
-            {PROJECTS.map((p, idx) => (
-              <div key={idx}>
-                <p>{idx + 1}. <span className="text-emerald-400 font-bold">[{p.status}]</span> {p.title}</p>
-                <p className="text-slate-400 pl-4">{p.description}</p>
-              </div>
-            ))}
-          </div>
-        );
-        break;
+        case 'skills':
+          responseOutput = (
+            <div className="space-y-1 text-slate-300 font-mono text-xs">
+              <p className="text-cyan-400 font-semibold">[+] TECHNICAL SKILLS BREAKDOWN</p>
+              {PROGRESS_SKILLS.map((s, idx) => (
+                <p key={idx}>├── <span className="text-amber-400">{s.name}:</span> {s.level}%</p>
+              ))}
+            </div>
+          );
+          break;
 
-      case 'about':
-        responseOutput = (
-          <div className="text-slate-300 text-xs leading-relaxed space-y-1 font-mono">
-            <p className="text-cyan-400 font-bold">{PERSONAL_BIO.company}</p>
-            <p>Lead Engineer: {PERSONAL_BIO.name}</p>
-            <p>Degree: {PERSONAL_BIO.degree}</p>
-            <p>Experience: {PERSONAL_BIO.experience}</p>
-          </div>
-        );
-        break;
+        case 'projects':
+          responseOutput = (
+            <div className="space-y-2 text-slate-300 text-xs font-mono">
+              <p className="text-cyan-400 font-semibold">[+] CORE PROJECTS & OPERATIONS</p>
+              {PROJECTS.map((p, idx) => (
+                <div key={idx}>
+                  <p>{idx + 1}. <span className="text-emerald-400 font-bold">[{p.status}]</span> {p.title}</p>
+                  <p className="text-slate-400 pl-4">{p.description}</p>
+                </div>
+              ))}
+            </div>
+          );
+          break;
 
-      case 'resume':
-      case 'cv':
-        responseOutput = (
-          <div className="space-y-1 text-xs font-mono text-slate-300">
-            <p className="text-cyan-400 font-bold">[+] RESUME / CV DOWNLOAD</p>
-            <a 
-              href="/Rodney_Binale_Khabanje_Cv.pdf" 
-              target="_blank" 
-              download="Rodney_Binale_Khabanje_Cv.pdf"
-              className="text-amber-400 underline font-semibold hover:text-cyan-400"
-            >
-              Click here to download Rodney_Binale_Khabanje_Cv.pdf
-            </a>
-          </div>
-        );
-        break;
+        case 'about':
+          responseOutput = (
+            <div className="text-slate-300 text-xs leading-relaxed space-y-1 font-mono">
+              <p className="text-cyan-400 font-bold">{PERSONAL_BIO.company}</p>
+              <p>Lead Engineer: {PERSONAL_BIO.name}</p>
+              <p>Degree: {PERSONAL_BIO.degree}</p>
+              <p>Experience: {PERSONAL_BIO.experience}</p>
+              <p>ERP Focus: {PERSONAL_BIO.erpSpecialization}</p>
+            </div>
+          );
+          break;
 
-      case 'contact':
-        responseOutput = (
-          <div className="text-xs text-slate-300 font-mono space-y-1">
-            <p><span className="text-cyan-400">Email:</span> rodneykbinalekhabanje@gmail.com</p>
-            <p><span className="text-cyan-400">Calls:</span> +254 759 314 735</p>
-            <p><span className="text-cyan-400">WhatsApp:</span> +254 757 468 025</p>
-          </div>
-        );
-        break;
+        case 'resume':
+        case 'cv':
+          responseOutput = (
+            <div className="space-y-1 text-xs font-mono text-slate-300">
+              <p className="text-cyan-400 font-bold">[+] RESUME / CV DOWNLOAD</p>
+              <a 
+                href="/Rodney_Binale_Khabanje_Cv.pdf" 
+                target="_blank" 
+                download="Rodney_Binale_Khabanje_Cv.pdf"
+                className="text-amber-400 underline font-semibold hover:text-cyan-400"
+              >
+                Click here to download Rodney_Binale_Khabanje_Cv.pdf
+              </a>
+            </div>
+          );
+          break;
 
-      case 'clear':
-        setTerminalHistory([]);
-        setInputVal('');
-        return;
+        case 'contact':
+          responseOutput = (
+            <div className="text-xs text-slate-300 font-mono space-y-1">
+              <p><span className="text-cyan-400">Email:</span> rodneykbinalekhabanje@gmail.com</p>
+              <p><span className="text-cyan-400">Calls:</span> +254 759 314 735</p>
+              <p><span className="text-cyan-400">WhatsApp:</span> +254 757 468 025</p>
+            </div>
+          );
+          break;
 
-      case 'exit':
-        onClose();
-        setInputVal('');
-        return;
+        case 'clear':
+          setTerminalHistory([]);
+          setInputVal('');
+          return;
 
-      default:
-        responseOutput = (
-          <p className="text-red-400 text-xs font-mono">
-            zsh: command not found: {cmd}. Type <span className="text-amber-400 underline">help</span> for commands.
-          </p>
-        );
-        break;
+        case 'exit':
+          onClose();
+          setInputVal('');
+          return;
+
+        default:
+          responseOutput = (
+            <p className="text-red-400 text-xs font-mono">
+              zsh: command not found: {cmd}. Type <span className="text-amber-400 underline">help</span> for available commands.
+            </p>
+          );
+          break;
+      }
     }
 
     setTerminalHistory((prev) => [...prev, { command: inputVal, output: responseOutput }]);
@@ -195,7 +220,7 @@ export const TerminalModal: React.FC<TerminalModalProps> = ({ isOpen, onClose, d
 
         <div className="bg-slate-950/60 px-4 py-2 border-t border-slate-800 text-xs text-slate-500 font-mono flex justify-between">
           <span>Press ESC or type &apos;exit&apos; to quit</span>
-          <span>v1.0.0</span>
+          <span>v1.1.0</span>
         </div>
 
       </div>

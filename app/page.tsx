@@ -1,13 +1,16 @@
+// app/page.tsx
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Cpu, Globe, Mail } from 'lucide-react';
+import { Cpu, Globe } from 'lucide-react';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
 import { TerminalBox } from './components/TerminalBox';
+import { HealthMonitor } from './components/HealthMonitor';
 import { TerminalModal } from './components/TerminalModal';
 import { ProjectsSection } from './components/ProjectsSection';
-import { PERSONAL_BIO, PROGRESS_SKILLS, SERVICES_LIST } from './data/portfolioData';
+import { ContactSection } from './components/ContactSection';
+import { PROGRESS_SKILLS, SERVICES_LIST, PERSONAL_BIO } from './data/portfolioData';
 
 export default function Portfolio() {
   const titles = [
@@ -75,6 +78,8 @@ export default function Portfolio() {
 
       <main className="max-w-5xl mx-auto px-6 py-12 space-y-20">
         
+        <HealthMonitor darkMode={darkMode} />
+
         <HeroSection 
           currentText={currentText}
           imageError={imageError}
@@ -85,11 +90,11 @@ export default function Portfolio() {
 
         <TerminalBox darkMode={darkMode} />
 
-        {/* Skills Section */}
+        {/* Technical Skills & Certifications */}
         <section id="skills" className="space-y-8">
           <div className={`border-b pb-4 ${darkMode ? 'border-slate-800' : 'border-slate-200'}`}>
             <h2 className={`text-2xl font-bold flex items-center gap-2 ${darkMode ? 'text-white' : 'text-slate-900'}`}>
-              <Cpu className="w-6 h-6 text-cyan-500"/> Technical Skills & Certifications
+              <Cpu className="w-6 h-6 text-cyan-500"/> Technical Capabilities & Cisco Certifications
             </h2>
           </div>
 
@@ -113,7 +118,7 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* Services Section */}
+        {/* Offered Services */}
         <section id="services" className="space-y-8">
           <div className={`border-b pb-4 ${darkMode ? 'border-slate-800' : 'border-slate-200'}`}>
             <h2 className={`text-2xl font-bold flex items-center gap-2 ${darkMode ? 'text-white' : 'text-slate-900'}`}>
@@ -135,28 +140,7 @@ export default function Portfolio() {
 
         <ProjectsSection darkMode={darkMode} />
 
-        {/* Contact Section */}
-        <section id="contact" className={`space-y-8 border-t pt-12 ${darkMode ? 'border-slate-800' : 'border-slate-200'}`}>
-          <div className={`border-b pb-4 ${darkMode ? 'border-slate-800' : 'border-slate-200'}`}>
-            <h2 className={`text-2xl font-bold flex items-center gap-2 ${darkMode ? 'text-white' : 'text-slate-900'}`}>
-              <Mail className="w-6 h-6 text-cyan-500"/> Contact Lead Engineer
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 font-mono text-xs">
-            <div className={`p-5 rounded-xl border space-y-2 ${darkMode ? 'border-slate-800 bg-slate-900/40' : 'border-slate-200 bg-white shadow-md'}`}>
-              <span className="text-cyan-600 dark:text-cyan-400 font-semibold block">🏢 {PERSONAL_BIO.company}</span>
-              <p className={darkMode ? 'text-slate-300' : 'text-slate-700'}>Network Admin | Custom Web Dev | Enterprise IT Support</p>
-              <p className="text-slate-500">Bungoma / Kisumu, Kenya (Global & Remote Contracts)</p>
-            </div>
-
-            <div className={`p-5 rounded-xl border space-y-2 ${darkMode ? 'border-slate-800 bg-slate-900/40' : 'border-slate-200 bg-white shadow-md'}`}>
-              <span className="text-emerald-600 dark:text-emerald-400 font-semibold block">💬 Direct Communication</span>
-              <p className="font-bold">Calls: +254 759 314 735</p>
-              <p className="font-bold">WhatsApp: +254 757 468 025</p>
-            </div>
-          </div>
-        </section>
+        <ContactSection darkMode={darkMode} />
 
       </main>
 
@@ -164,6 +148,7 @@ export default function Portfolio() {
         isOpen={isTerminalOpen}
         onClose={() => setIsTerminalOpen(false)}
         darkMode={darkMode}
+        setDarkMode={setDarkMode}
       />
 
       <footer className={`border-t py-8 text-center text-xs font-mono ${darkMode ? 'border-slate-800 text-slate-500' : 'border-slate-200 text-slate-600'}`}>
