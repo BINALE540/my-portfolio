@@ -31,7 +31,10 @@ export const TerminalBox: React.FC<TerminalBoxProps> = ({ darkMode }) => {
         <p><span className="text-amber-600 dark:text-amber-400 font-semibold">[+] Education    :</span> {PERSONAL_BIO.degree}</p>
         <p><span className="text-amber-600 dark:text-amber-400 font-semibold">[+] ICT Practical:</span> {PERSONAL_BIO.experience}</p>
         <p><span className="text-amber-600 dark:text-amber-400 font-semibold">[+] ERP Expertise:</span> {PERSONAL_BIO.erpSpecialization}</p>
-        <p><span className="text-amber-600 dark:text-amber-400 font-semibold">[+] Cisco Certs  :</span> {PERSONAL_BIO.certifications.join(' | ')}</p>
+        <p>
+          <span className="text-amber-600 dark:text-amber-400 font-semibold">[+] Cisco Certs  :</span>{' '}
+          {PERSONAL_BIO.certifications.map((c) => c.name).join(' | ')}
+        </p>
         
         <p className={`pt-2 font-sans text-xs sm:text-sm leading-relaxed ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
           {PERSONAL_BIO.summary}

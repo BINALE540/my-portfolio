@@ -1,5 +1,10 @@
 // app/data/portfolioData.ts
 
+export interface Certification {
+  name: string;
+  date: string;
+}
+
 export const PERSONAL_BIO = {
   name: "Binale Rodney Khabanje",
   company: "BI-TECH Digital Solutions",
@@ -9,12 +14,12 @@ export const PERSONAL_BIO = {
   experience: "ICT Directorate Practical Experience (Kibabii University)",
   erpSpecialization: "ABNO Unisol ERP Configuration & Support",
   certifications: [
-  "Cisco: Cyber Threat Management",
-  "Cisco: Networking Basics",
-  "Cisco: Python Essentials 1",
-  "Cisco: Introduction to Cybersecurity"
-],
-  summary: `A results-driven Information Systems professional specializing in IT support, network administration, systems administration, cybersecurity concepts, and enterprise systems support. Experienced in computer troubleshooting, network maintenance, ERP configuration, operating system installation, and technical support through practical experience at Kibabii University ICT Directorate. Proficient in diagnosing hardware/software issues and supporting enterprise applications including ABNO Unisol ERP.`
+    { name: "Cisco: Cyber Threat Management", date: "2024" },
+    { name: "Cisco: Networking Basics", date: "2026" },
+    { name: "Cisco: Python Essentials 1", date: "2025" },
+    { name: "Cisco: Introduction to Cybersecurity", date: "2023" }
+  ] as Certification[],
+  summary: `A results-driven Information Systems professional specializing in IT support, network administration, systems administration, cybersecurity concepts, and enterprise systems support...`
 };
 
 export const PROGRESS_SKILLS = [
